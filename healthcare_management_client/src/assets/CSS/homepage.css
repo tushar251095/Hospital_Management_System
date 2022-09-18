@@ -1,0 +1,34 @@
+.banner1{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),url('../../../public/Images/banner1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    height: 60vh;
+    background-size: cover;
+}
+.banner2{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),url('../../../public/Images/banner2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    height: 60vh;
+    background-size: cover;
+}
+.banner3{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),url('../../../public/Images/banner3.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    color: white;
+    height: 60vh;
+    background-size: cover;
+}
+
