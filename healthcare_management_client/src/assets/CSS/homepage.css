@@ -32,3 +32,16 @@
     background-size: cover;
 }
 
+.roundImage{
+  border-radius: 50%;
+  height: 20vh;
+  width: 45%;
+  margin: auto;
+  display: block;
+ 
+}
+
+.card{
+  height: 50vh;
+}
+
