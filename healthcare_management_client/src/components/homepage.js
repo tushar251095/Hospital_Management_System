@@ -2,10 +2,10 @@ import React from 'react'
 import '../assets/CSS/common.css'
 import '../assets/CSS/homepage.css'
 import Carousel from 'react-bootstrap/Carousel';
-const Header=()=>{
+const homepage=()=>{
     return(
-        <div className='main container-fluid'>
-          <div className='row'>
+        <div className='main container-fluid g-0'>
+          <div className='row g-0'>
             <Carousel fade>
               <Carousel.Item>
                 <div className='banner1'></div>
@@ -32,34 +32,34 @@ const Header=()=>{
               </Carousel.Item>
             </Carousel>
           </div>
-          <div className='row mt-4'>
-            <h2 className='text-center'>Our Services</h2>
+          <div className='row mt-4 g-0'>
+            <h2 className='text-center g-0'>Our Services</h2>
           </div>
-          <div className='row p-5'>
-              <div className='col-sm-3'>
-                <div className='card p-4'>
-                    <h3 className='text-center'>Ambulance</h3>
+          <div className='row g-0'>
+              <div className='col-sm-12 col-md-6 col-lg-4 p-3'>
+                <div className='card p-4 h-100'>
+                    <h4 className='text-center'>Ambulance</h4>
                     <img src="Images/ambulance.jpg" alt="Ambulance" className='roundImage' />
                     <p className='mt-3'>Ambulance services provide medically necessary treatment for Medicaid recipients.<br/>
-                    Services include emergency and non-emergency ambulance transport by ground and air
+                    Services include emergency and non-emergency ambulance transport by ground and air.
                     </p>
                 </div>
               </div>
 
-              <div className='col-sm-3'>
-                <div className='card p-4'>
-                    <h3 className='text-center'>Online Doctor Consultation</h3>
+              <div className='col-sm-12 col-md-6 col-lg-4 p-3'>
+                <div className='card p-4 h-100'>
+                    <h4 className='text-center'>Doctor Consultation</h4>
                     <img src="Images/doctor.webp" alt="Doctor" className='roundImage' />
                     <p className='mt-3'>Urgent Care video visits from us let you have a live video chat with a
                      qualified healthcare provider, 24 hours a day, 7 days a week.
-                     All you need is a camera-enabled device. 
+                     All you need is a camera-enabled mobile, laptop or tablet. 
                     </p>
                 </div>
               </div>
 
-              <div className='col-sm-3'>
-                <div className='card p-4'>
-                    <h3 className='text-center'>Tracking Medical Record</h3>
+              <div className='col-sm-12 col-md-6 col-lg-4 p-3'>
+                <div className='card p-4 h-100'>
+                    <h4 className='text-center'>Medical History</h4>
                     <img src="Images/record.jpg" alt="Record" className='roundImage' />
                     <p className='mt-3'>You can track your all medical record and download them when required.
                     It helps to analyze your medical history for video visits.You can choose to share the records, by default sharing is off.
@@ -67,19 +67,19 @@ const Header=()=>{
                 </div>
               </div>
 
-              <div className='col-sm-3'>
+              {/* <div className='col-sm-12 col-md-6 col-lg-4'>
                 <div className='card p-4'>
-                    <h3 className='text-center'>Pharmacy</h3>
+                    <h4 className='text-center'>Pharmacy</h4>
                     <img src="Images/pharmacy.webp" alt="Pharmacy" className='roundImage' />
                     <p className='mt-3'>Get your medicines 24/7 by uploading the online prescription.<br/>
                     Get your medicine 24/7 by uploading the online prescription.
                     </p>
                 </div>
-              </div>
+              </div> */}
           </div>
         </div>
         
     )
 }
 
-export default Header
+export default homepage

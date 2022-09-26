@@ -1,6 +1,36 @@
 .main{
-   
-    margin-Top:114px;
+    /* margin-Top:0vh; */
     min-Height:calc(100vh - 391px);
       
 }
+
+.listgroupitem{
+    background-Color: transparent;
+    border: none;
+    font-size:20px;
+    font-weight:400;
+  }
+
+  .listgroupitem :hover{
+    color: azure;
+  }
+
+  .linkTag{
+    text-decoration: none !important;; 
+    color: black;
+  }
+
+  a:link { text-decoration: none; }
+  a:visited { text-decoration: none; }
+  a:hover { text-decoration: none; }
+  a:active { text-decoration: none; }
+
+  .lables{
+    font-size: large;
+    font-weight: 600;
+  }
+
+  .btn-primary{
+    background-color: #596ea9;
+    border-color: #596ea9;
+  }
