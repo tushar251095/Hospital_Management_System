@@ -4,6 +4,7 @@ import Footer from './components/footer'
 import Homepage from './components/homepage'
 import NavBar from './components/navbar'
 import UserRegistration from './components/registrationForm'
+import Test from './components/test'
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom'
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Homepage/>} />
             <Route path="/user/registartion" element={<UserRegistration/>} />
+            <Route path="/test" element={<Test/>}/>
           </Routes>
           <Footer/>
         </div>

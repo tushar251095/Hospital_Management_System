@@ -17,3 +17,13 @@ exports.registerUser = (req, res, next) => {
       next(err);
     });
 };
+
+exports.test = (req, res, next) => {
+  User.find()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};

@@ -41,10 +41,10 @@ const Footer=()=>{
                     </div>
                 </div>
             </div>
-            <div class="row g-0">
+            <div className="row g-0">
            
-                <div class="col-sm-12 text-center text-light p-1"  style={mainFooter.bottomFotter}>
-                    <p class="mt-2">Copyright&nbsp; <FontAwesomeIcon icon={faCopyright} size="md" />&nbsp;2022 Healthcare Management</p>
+                <div className="col-sm-12 text-center text-light p-1"  style={mainFooter.bottomFotter}>
+                    <p className="mt-2">Copyright&nbsp; <FontAwesomeIcon icon={faCopyright} size="1x" />&nbsp;2022 Healthcare Management</p>
                 </div>
             </div>   
         </div>

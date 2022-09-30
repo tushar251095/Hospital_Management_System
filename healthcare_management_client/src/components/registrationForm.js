@@ -1,6 +1,9 @@
 import React from 'react'
+import {  useEffect,useState } from "react";
+import axios from 'axios'
 import '../assets/CSS/common.css'
 import '../assets/CSS/registartion.css'
+//import Services from '../services/userServices'
 const userRegistartion=()=>{
     return(
         <div className='main container-fluid g-0'>
