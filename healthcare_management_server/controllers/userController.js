@@ -1,4 +1,4 @@
-const { User } = require("../model/userModel");
+const  User = require("../model/userModel");
 const { v4: uuidv4 } = require("uuid");
 //api to add new user 
 exports.registerUser = (req, res, next) => {

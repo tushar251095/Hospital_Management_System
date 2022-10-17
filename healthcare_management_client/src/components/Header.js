@@ -33,7 +33,7 @@ const Header=()=>{
                     <img src="Images/logo.png" className="float-start ms-4 mt-2 linkTag" alt="logo" height='70' width='60'/>
                     </Link>
                     <Link to={"/"}>
-                    <h4 className="mt-4 pt-1 linkTag">&nbsp;Healthcare Management</h4>
+                    <h4 className="mt-4 pt-1 linkTag">&nbsp;HMS</h4>
                     </Link>
 
                    

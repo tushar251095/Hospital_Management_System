@@ -15,9 +15,6 @@ const Navbar=()=>{
                             <Link className='linkTag'>Appointment</Link>
                         </li>
                         <li className="list-group-item listgroupitem">
-                           <Link className='linkTag'>Book Ambulance</Link> 
-                        </li>
-                        <li className="list-group-item listgroupitem">
                         <Link className='linkTag'>Records</Link>
                         </li>
                      </ul>

@@ -38,10 +38,10 @@ const homepage=()=>{
           <div className='row g-0'>
               <div className='col-sm-12 col-md-6 col-lg-4 p-3'>
                 <div className='card p-4 h-100'>
-                    <h4 className='text-center'>Ambulance</h4>
-                    <img src="Images/ambulance.jpg" alt="Ambulance" className='roundImage' />
-                    <p className='mt-3'>Ambulance services provide medically necessary treatment for Medicaid recipients.<br/>
-                    Services include emergency and non-emergency ambulance transport by ground and air.
+                    <h4 className='text-center'>Facility Management</h4>
+                    <img src="Images/facility.png" alt="Ambulance" className='roundImage' />
+                    <p className='mt-3'>HMS collects all information and makes it readily available whenever required. Your receptionist can easily
+                     check the information from the system and convey it to those who seek it. 
                     </p>
                 </div>
               </div>
