@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from '../services/axios'
 import '../assets/CSS/common.css'
 import '../assets/CSS/registartion.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-export const registrationForm = () => {
+export const registrationForm = (props) => {
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
     const [contact, setContact] = useState("");
     const [password, setPassword] = useState("");
-
+    var navigate=useNavigate();
     const handleInputChange = (e) => {
         const {id , value} = e.target;
         if(id === "firstName"){
@@ -25,9 +25,6 @@ export const registrationForm = () => {
         if(id === "email"){
             setEmail(value);
         }
-        if(id === "username"){
-            setUsername(value);
-        }
         if(id === "contact"){
             setContact(value);
         }
@@ -37,27 +34,28 @@ export const registrationForm = () => {
 
     }
     const handleSubmit  = (e) => {
-       // e.preventDefault();
+       e.preventDefault();
         let obj = {
             firstName : firstName,
             lastName : lastName,
             email:email,
-            username:username,
             contact:contact,
             password:password,
         }     
-        axios.post('/user/register',obj)
+        axios.post('/register',obj)
         .then(res=>{
             if(res){
                 toast.success("Registration successfull")
+               navigate('/user/login')
             }else{
                 toast.error("Something went wrong please try again")
             }
             
         })
         .catch(error=>{
+            console.log(error)
             if(error.response.data.statusCode==500){
-                toast.error("Username/email already in used.Please try with another one")
+                toast.error("email already in used.Please try with another one")
             }else{
                 toast.error("Server side validation error: \n"+error.response.data.message)
             }
@@ -94,14 +92,12 @@ export const registrationForm = () => {
                 <input type={"text"} id="lastName" value={lastName} onChange = {(e) => handleInputChange(e)} placeholder="Enter your last name" className='form-control'/><br/>
                 <label className='lables'>Email:</label>
                 <input type={"text"} id="email" value={email} onChange = {(e) => handleInputChange(e)} placeholder="Enter your email" className='form-control'/><br/>
-                <label className='lables'>Username:</label>
-                <input type={"text"} id="username" value={username} onChange = {(e) => handleInputChange(e)} placeholder="Enter your Username" className='form-control'/><br/>
                 <label className='lables'>Phone No.:</label>
                 <input type={"text"} id="contact" value={contact} onChange = {(e) => handleInputChange(e)} placeholder="Enter your contact" className='form-control'/><br/>
                 <label className='lables'>Password:</label>
                 <input type={"text"} id="password" value={password} onChange = {(e) => handleInputChange(e)} placeholder="Enter your password" className='form-control'/><br/>
                 <div className='text-center'>
-                    <button onClick={()=>handleSubmit()} tyep="submit" className='btn btn-primary w-50'>Submit</button>
+                    <button onClick={(e)=>handleSubmit(e)} tyep="submit" className='btn btn-primary w-50'>Submit</button>
                 </div>
                
             </div>

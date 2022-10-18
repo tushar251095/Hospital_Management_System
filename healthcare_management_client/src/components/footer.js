@@ -13,12 +13,13 @@ const mainFooter={
     backgroundColor:'#7F93CB',
    }
 }
+var imageBasePath = window.location.protocol + "//" + window.location.host + "/Images/logo.png";
 const Footer=()=>{
     return(
         <div className='container-fluid container-fluid footer mt-auto g-0' style={mainFooter.main}>
             <div className='row g-0 p-5'>
                 <div className='col-sm-3 d-flex justify-content-center'>
-                    <img className='' src="Images/logo.png" alt='logo' height='90' width='80' />
+                    <img className='' src={imageBasePath} alt='logo' height='90' width='80' />
                 </div>
                 <div className='col-sm-3'>
                 <h4>Home</h4>

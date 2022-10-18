@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import '../assets/CSS/common.css'
+import { useAuth } from './utlis/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 const mainHeader={
     main:{
         backgroundColor:'#BDC9EA',
@@ -25,12 +27,19 @@ const mainHeader={
       }
 }
 const Header=()=>{
+    const auth= useAuth();
+    const navigate=useNavigate();
+    const handleLogout=()=>{
+        auth.logout()
+        navigate('/')
+    }
+    var imageBasePath = window.location.protocol + "//" + window.location.host + "/Images/logo.png";
     return(
         <div className='container-fluid g-0' style={mainHeader.main}>
             <div className='row g-0'>
                 <div className="col-sm-5 logo">
                     <Link to={"/"}>
-                    <img src="Images/logo.png" className="float-start ms-4 mt-2 linkTag" alt="logo" height='70' width='60'/>
+                    <img src={imageBasePath} className="float-start ms-4 mt-2 linkTag" alt="logo" height='70' width='60'/>
                     </Link>
                     <Link to={"/"}>
                     <h4 className="mt-4 pt-1 linkTag">&nbsp;HMS</h4>
@@ -46,12 +55,22 @@ const Header=()=>{
                 </div> */}
                 <div className='col-sm-7'>
                     <ul className="list-group list-group-horizontal mt-5 float-end" >
-                        <li className="list-group-item" style={mainHeader.listgroupitem}>
+                        {
+                            !localStorage.getItem('token') &&  <li className="list-group-item" style={mainHeader.listgroupitem}>
                             <Link to="/user/registartion" className='linkTag'>Sign up</Link>
-                        </li>
-                        <li className="list-group-item" style={mainHeader.listgroupitem}>
-                            Login
-                        </li>
+                         </li>
+                        }
+                        {
+                            !localStorage.getItem('token') &&  <li className="list-group-item" style={mainHeader.listgroupitem}>
+                            <Link to="/user/login" className="linkTag">Login</Link>
+                         </li>
+                        }
+                        {
+                           localStorage.getItem('token') &&  <li className="list-group-item" style={mainHeader.listgroupitem} onClick={handleLogout}>
+                            <Link className="linkTag">Logout</Link>
+                         </li>
+                        }
+                       
                      </ul>
                 </div>
             </div>
