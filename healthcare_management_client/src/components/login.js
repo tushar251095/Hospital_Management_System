@@ -4,7 +4,7 @@ import axios from '../services/axios'
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuth } from './utlis/AuthProvider';
+import { useAuth } from '../utlis/AuthProvider';
 import jwt_decode from "jwt-decode";
 export const login = () => {
     const [email, setEmail] =useState("");

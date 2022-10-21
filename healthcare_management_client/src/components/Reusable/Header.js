@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import '../assets/CSS/common.css'
-import { useAuth } from './utlis/AuthProvider';
+import '../../assets/CSS/common.css'
+import { useAuth } from '../../utlis/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 const mainHeader={
     main:{
@@ -32,6 +32,7 @@ const Header=()=>{
     const handleLogout=()=>{
         auth.logout()
         navigate('/')
+        window.location.reload()
     }
     var imageBasePath = window.location.protocol + "//" + window.location.host + "/Images/logo.png";
     return(
