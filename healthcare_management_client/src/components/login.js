@@ -40,6 +40,7 @@ export const login = () => {
                         navigate('/user/doctor')
                     }
                     toast.success("Login successfull")
+                    window.location.reload()
         })
         .catch(error=>{
             console.log(error)

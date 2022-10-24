@@ -9,7 +9,12 @@ import Admin from './components/Admin/adminLandingPage'
 import Patient from './components/Patient/patientLandingPage'
 import Doctor from './components/Doctor/doctorLandingPage'
 import ManageSchedule from './components/Doctor/manageSchedule';
+import Specialities from './components/Patient/specialities';
+import DoctorList from './components/Patient/doctorList';
+import MyAppointment from './components/Patient/myAppointment';
+import ViewAppointment from './components/Doctor/viewAppointment';
 import { AddDoctor } from './components/Admin/addDoctor';
+import BookAppointment from './components/Patient/bookAppointment';
 import {RequireAuth} from './utlis/RequireAuth'
 import { AuthProvider } from './utlis/AuthProvider';
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom'
@@ -30,10 +35,15 @@ function App() {
             </Route>
             <Route element={ <RequireAuth allowedRoles={["patient"]}/>}>
                 <Route path="/user/patient" element={<Patient/>}/>
+                <Route path="/user/patient/specialities" element={<Specialities/>}/>
+                <Route path="/user/patient/bookappointment" element={<BookAppointment/>}/>
+                <Route path="/user/patient/doctorlist" element={<DoctorList/>}/>
+                <Route path="/user/patient/appointments" element={<MyAppointment/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["doctor"]}/>}>
               <Route path="/user/doctor" element={<Doctor/>}/>
               <Route path="/user/doctor/schedule" element={<ManageSchedule/>}/>
+              <Route path="/user/doctor/view/appointments" element={<ViewAppointment/>}/>
             </Route>
           </Routes>
           <Footer/>

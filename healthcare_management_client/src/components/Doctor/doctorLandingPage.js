@@ -9,7 +9,7 @@ export const doctorLandingPage = () => {
             <Card color="card-color-tomato" type='IconsR' icon="faCalendarDays" title="Manage Schedule" link='/user/doctor/schedule'/>
           </div>
           <div className='col-sm-4 p-1'>
-            <Card color="card-color-green" type='IconsR' icon="faEye" title="View Appointments"/>
+            <Card color="card-color-green" type='IconsR' icon="faEye" title="View Appointments" link='/user/doctor/view/appointments'/>
           </div>
           <div className='col-sm-4 p-1'>
             <Card color="card-color-yellow" type='IconsR' icon="faCalendarDays" title="Comming soon"/>

@@ -52,6 +52,7 @@ exports.verifyToken = (req, res, next) => {
     req.headers.authorization &&
     req.headers.authorization.split(" ")[0] === "Bearer"
   ) {
+    //console.log(req.headers.authorization)
     jwt.verify(
       req.headers.authorization.split(" ")[1],
       secretKey,
@@ -103,6 +104,7 @@ exports.decodeJWT = (token) => {
     userinfo.lastName = decode.lastName;
     userinfo.role=decode.role
     userinfo.email=decode.email
+    userinfo.id=decode.id
   });
   if (err1 != null) {
     let err = "";

@@ -5,7 +5,8 @@ const cors = require("cors");
 const morgan = require('morgan');
 const methodoverride= require('method-override')
 const userRouter= require("./routes/userRoutes")
-
+const doctorRouter= require("./routes/doctorRoutes")
+const patientRouter= require("./routes/patientRoutes")
 app.use(express.json());
 
 //cors policy for server
@@ -32,7 +33,8 @@ app.use(express.urlencoded({extended:true}))
 
 //routes
 app.use("/user",userRouter);
-
+app.use("/doctor",doctorRouter);
+app.use("/patient",patientRouter);
 //middleware to handle pagenotfound error
 app.use((req,res,next)=>{
     let err= new Error("Serevr cannot locate the given URL "+req.url)

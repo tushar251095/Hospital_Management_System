@@ -7,7 +7,9 @@ const doctorSchema = new Schema({
     email: { type: String, required: [true, 'email address is required'], unique: [true, 'this email address has been used'] },
     contact: { type: String, required: [true, 'contact is required'] },
     specialization: { type: String, required: [true, 'specialization is required'] },
-    role: { type: String, default:"doctor" }
+    specId: {type: String, required: [true, 'specId required']},
+    role: { type: String, default:"doctor" },
+    schedule: { type: Array, default:[] },
 },
 {
   timestamps:true

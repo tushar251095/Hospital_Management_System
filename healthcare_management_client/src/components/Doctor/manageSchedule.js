@@ -4,20 +4,24 @@ import '../../assets/CSS/common.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from 'react-time-picker';
-
+import axios from '../../services/doctorService'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 export const ManageSchedule = () => {
     const [endDate, setEndDate] = useState(new Date());
     const [startTime, setStartTime] = useState('10:00');
     const [endTime, setEndTime] = useState('10:00');
     const [days, setdays] = useState([]);
     const [slot, setSlot] = useState("5");
+    const navigate=useNavigate();
     const checkList = ["Sunday", "Monday", "Tuesday", "Wednesday","Thrusday","Friday","Saturday"];
     const handleCheck = (event) => {
         var updatedList = [...days];
         if (event.target.checked) {
-          updatedList = [...days, event.target.value];
+          updatedList = [...days, parseInt(event.target.value)];
         } else {
-          updatedList.splice(days.indexOf(event.target.value), 1);
+          updatedList.splice(days.indexOf(parseInt(event.target.value)), 1);
         }
         setdays(updatedList);
       };
@@ -25,16 +29,41 @@ export const ManageSchedule = () => {
       const generateSchedule=(e)=>{
         e.preventDefault();
          let obj={
-            endDate:endDate.toLocaleDateString(),
+            endDate:endDate,
             startTime:startTime,
             endTime:endTime,
             days:days,
             slot:parseInt(slot)
          }
-         console.log(obj)
+         axios.post('/generate/schedule',obj)
+        .then(res=>{
+            if(res){
+                toast.success("Schedule Generated successfull")
+                navigate('/user/doctor')
+            }else{
+                toast.error("Something went wrong please try again")
+            }
+            
+        })
+        .catch(error=>{
+            console.log(error)
+                toast.error("Server side validation error: \n"+error.response.data.message)
+        })
       }
   return (
     <div className='container-fluid'>
+        <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         <div className='row'>
             <div className='col-sm-12'>
                 <h3 className='text-center mt-3'>Manage Schedule</h3>
@@ -51,7 +80,7 @@ export const ManageSchedule = () => {
                 <label className='lables'>Days: </label>
                 {checkList.map((item, index) => (
                     <span key={index}>
-                        <input value={item} type="checkbox" onChange={(e)=>handleCheck(e)} />
+                        <input value={index} type="checkbox" onChange={(e)=>handleCheck(e)} />
                         <span>{item}</span>
                     </span>
                  ))}<br/>

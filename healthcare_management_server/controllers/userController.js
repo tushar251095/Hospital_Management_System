@@ -1,12 +1,13 @@
 const  Patient = require("../model/patientModel");
 const  User = require("../model/masterUser");
 const  Doctor = require("../model/doctorModel");
+const  Spec = require("../model/specialitiesModel");
 const jwtMiddleware = require("../middleware/jwt");
 const { v4: uuidv4 } = require("uuid");
 //api to add new user 
 exports.registerUser = (req, res, next) => {
  //console.log(req.body);
- req.body.userId = uuidv4();
+ req.body.patientId = uuidv4();
  req.body.role="patient"
   let patient = new Patient(req.body);
   let obj={
@@ -114,18 +115,28 @@ exports.Login = (req, res, next) => {
 
             getDeatils(user.role,user.email)
             .then(result=>{
-              if(result!="admin"){
+              if(result.role=="patient"){
                 userinfo.firstName=result.firstName,
                 userinfo.lastName=result.lastName,
                 userinfo.role=result.role
                 userinfo.email=result.email
+                userinfo.id=result.patientId
               }else if(result.role=="admin"){
                 userinfo.firstName="admin",
                 userinfo.lastName="admin",
                 userinfo.role="admin"
                 userinfo.email=result.email
+                userinfo.id='hdjhdjhdhddhuh'
+              }else if(result.role=="doctor"){
+                userinfo.firstName=result.firstName,
+                userinfo.lastName=result.lastName,
+                userinfo.role=result.role
+                userinfo.email=result.email
+                userinfo.id=result.doctorId
               }
+              //console.log(userinfo)
               const token = jwtMiddleware.generateToken(userinfo);
+              
               res.json({
                 token
               });
@@ -140,3 +151,26 @@ exports.Login = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
+exports.geAllSpecialities=(req,res,next)=>{
+  Spec.find()
+  .then((result)=>{
+    //console.log(result)
+    res.send(result)
+  })
+  .catch(error=>next(error))
+}
+
+exports.addSpecialities=(req,res,next)=>{
+  req.body.specId = uuidv4();
+   let speciality= new Spec(req.body)
+   speciality.save()
+   .then((result)=>{
+      if(result){
+        res.send(true)
+      }else{
+        res.send(false)
+      }
+   })
+   .catch(error=>next(error))
+}
