@@ -44,6 +44,13 @@ const patientSchema = new Schema({
     patientId: {type: String, required: [true, 'UserID required']},
     firstName: {type: String, required: [true, 'first name is required']},
     lastName: {type: String, required: [true, 'last name is required']},
+    age:{type: String, required:[true, 'Age is required']},
+    gender:{type: String, required:[true, 'Gender is required']},
+    height:{type: String},
+    weight:{type: String},
+    bloodGroup:{type: String},
+    bloodPressure:{type: String},
+    sugarLevel:{type: String},
     email: { type: String, required: [true, 'email address is required'], unique: [true, 'this email address has been used'] },
     contact: { type: String, required: [true, 'contact is required'] },
     role: { type: String, default:"patient" }

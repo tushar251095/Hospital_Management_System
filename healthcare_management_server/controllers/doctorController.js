@@ -1,8 +1,9 @@
-// const  Patient = require("../model/patientModel");
+const  Patient = require("../model/patientModel");
 // const  User = require("../model/masterUser");
 const  Doctor = require("../model/doctorModel");
 const  Appointment = require("../model/appointmentModel");
 const jwtMiddleware = require("../middleware/jwt");
+const { request } = require("express");
 
 exports.GenerateSchedule = (req,res,next)=>{
     let token = req.headers.authorization.split(" ")[1];
@@ -98,6 +99,29 @@ exports.cancelAppointment=(req,res,next)=>{
       }else{
         res.send(false)
       }
+  })
+  .catch(err=>next(err))
+}
+
+exports.GetPatient=(req,res,next)=>{
+Patient.findOne({patientId:req.params.id})
+.then(data=>{
+  console.log(data)
+  res.send(data)
+})
+.catch(err=>next(err))
+}
+
+exports.updatePateintDetails=(req,res,next)=>{
+  Appointment.updateOne({_id:req.body.appId},{$set:{"appointmentDetails":req.body,"status":"attended"}})
+  .then(()=>{
+     Patient.updateOne({patientId:req.body.patientId},{$set:{"height":req.body.height,"weight":req.body.weight,
+      "bloodGroup":req.body.bloodGroup,
+      "bloodPressure":req.body.bloodPressure,"sugarLevel":req.body.sugarLevel}})
+      .then(()=>{
+          res.send(true);
+      })
+      .catch(err=>next(err))
   })
   .catch(err=>next(err))
 }

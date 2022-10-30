@@ -5,6 +5,7 @@ import axios from '../../services/doctorService'
 import { useNavigate } from 'react-router-dom';
 export const DoctorList = () => {
     const [list,setList]=useState([])
+    
     const navigate=useNavigate();
     useEffect(() => {
         axios.get('/specality/'+localStorage.getItem('specId'))
@@ -22,6 +23,7 @@ export const DoctorList = () => {
     }
   return (
     <div className='container-fluid'>
+        
         <div className='row g-0 mt-3'>
             <div className='col-sm-12'>
                 <h3 className='text-center'>Doctors List</h3>

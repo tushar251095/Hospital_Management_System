@@ -13,6 +13,8 @@ export const registrationForm = (props) => {
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
     const [password, setPassword] = useState("");
+    const [age, setAge] = useState("");
+    const [gender, setGender] = useState("Male");
     var navigate=useNavigate();
     const handleInputChange = (e) => {
         const {id , value} = e.target;
@@ -41,7 +43,10 @@ export const registrationForm = (props) => {
             email:email,
             contact:contact,
             password:password,
-        }     
+            age:age,
+            gender:gender
+        }   
+        console.log(obj)  
         axios.post('/register',obj)
         .then(res=>{
             if(res){
@@ -90,6 +95,14 @@ export const registrationForm = (props) => {
                 <input type={"text"} id="firstName" value={firstName} onChange = {(e) => handleInputChange(e)} placeholder="Enter your first name" className='form-control'/><br/>
                 <label className='lables'>Last Name:</label>
                 <input type={"text"} id="lastName" value={lastName} onChange = {(e) => handleInputChange(e)} placeholder="Enter your last name" className='form-control'/><br/>
+                <label className='lables'>Age:</label>
+                <input type={"text"} id="age" value={age} onChange = {(e) => setAge(e.target.value)} placeholder="Enter your first name" className='form-control'/><br/>
+                <label className='lables'>Gender:</label>
+                <select className='form-control' value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select><br/>
                 <label className='lables'>Email:</label>
                 <input type={"text"} id="email" value={email} onChange = {(e) => handleInputChange(e)} placeholder="Enter your email" className='form-control'/><br/>
                 <label className='lables'>Phone No.:</label>

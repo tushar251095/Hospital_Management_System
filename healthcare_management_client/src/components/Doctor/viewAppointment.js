@@ -3,8 +3,24 @@ import { useEffect, useState } from 'react'
 import axios from '../../services/doctorService'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-export const ViewAppointment = () => {
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+export const ViewAppointment = (props) => {
+    const [height, setHeight]= useState("");
+    const [weight, setWeight] = useState("");
+    const [bloodGroup, setBloodGroup] = useState("");
+    const [sugarLevel, setSugarLevel] = useState("");
+    const [bloodPressure, setBloodPressure] =useState("");
+    const [fullName, setFullName]= useState("");
+    const [age, setAge]= useState("");
+    const [gender, setGender]= useState("");
     const [Appointments,setAppointment]=useState([])
+    const [show, setShow] = useState(false);
+    const [patientId, setpatientId] = useState(false);
+    const [appId, setappId] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     useEffect(()=>{
         ViewAppointment()
     },[])
@@ -12,6 +28,37 @@ export const ViewAppointment = () => {
         axios.get('/view/appointments')
         .then(res=>{
             setAppointment(res.data);
+            //console.log(res.data)
+        })
+    }
+    const getDetails=(e,id,appid)=>{
+       e.preventDefault()
+       setpatientId(id)
+       setappId(appid)
+        axios.get("/get/patient/"+id)
+        .then(res=>{
+            setShow(true);
+            setFullName(res.data.firstName+" "+res.data.lastName);
+            setAge(res.data.age);
+            setGender(res.data.gender);
+            if(res.data.hasOwnProperty('height')){
+                setHeight(res.data.height)
+            }
+            if(res.data.hasOwnProperty('weight')){
+                setWeight(res.data.weight)
+            }
+
+            if(res.data.hasOwnProperty('sugarLevel')){
+                setSugarLevel(res.data.sugarLevel)
+            }
+
+            if(res.data.hasOwnProperty('bloodGroup')){
+                setBloodGroup(res.data.bloodGroup)
+            }
+
+            if(res.data.hasOwnProperty('bloodPressure')){
+                setBloodPressure(res.data.bloodPressure)
+            }
             //console.log(res.data)
         })
     }
@@ -32,6 +79,28 @@ export const ViewAppointment = () => {
             console.log(err)
         })
     }
+
+    const updatePatientDeatils=(e)=>{
+        e.preventDefault();
+        let obj={
+            height:height,
+            weight:weight,
+            bloodPressure:bloodPressure,
+            bloodGroup:bloodGroup,
+            sugarLevel:sugarLevel,
+            patientId:patientId,
+            appId:appId
+
+        }
+        axios.post('/update/patient/details',obj)
+        .then((res)=>{
+           if(res.data){
+            handleClose()
+           }
+           ViewAppointment()
+        })
+        console.log(obj)
+    }
   return (
     <div className='container-fluid'>
         <div>
@@ -48,6 +117,60 @@ export const ViewAppointment = () => {
                 theme="light"
             />
         </div>
+        <Modal {...props} size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+                <h4>Patient Details</h4>
+                
+    
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <div className='row'>
+                <div className='col-sm-12'>
+                    <div className='text-end'>
+                        <button className='btn btn-primary btn-sm'>View History</button>
+                    </div> 
+                </div>
+            </div>
+            <div className='row mt-3'>
+                <div className='col-sm-12'>
+                    <label className='lables'>Full Name: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {fullName}
+                    </span> <br/>
+                    <label className='lables'>Age: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {age}
+                    </span> <br/>
+                    <label className='lables'>Geder: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {gender}
+                    </span><br/>
+                    <label className='lables'>Height: &nbsp;</label>
+                    <input type={"text"} id="height" value={height} onChange = {(e) => setHeight(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
+                    <label className='lables'>Weight: &nbsp;</label>
+                    <input type={"text"} id="weight" value={weight} onChange = {(e) => setWeight(e.target.value)} placeholder="Enter patient's weight" className='form-control'/><br/>
+                    <label className='lables'>Blood Level: &nbsp;</label>
+                    <input type={"text"} id="bloodPressure" value={bloodPressure} onChange = {(e) => setBloodPressure(e.target.value)} placeholder="Enter patient's blood pressure" className='form-control'/><br/>
+                    <label className='lables'>Sugar Level: &nbsp;</label>
+                    <input type={"text"} id="sugarLevel" value={sugarLevel} onChange = {(e) => setSugarLevel(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
+                    <label className='lables'>Blood Group: &nbsp;</label>
+                    <input type={"text"} id="bloodGroup" value={bloodGroup} onChange = {(e) => setBloodGroup(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
+                </div>
+            </div>
+           
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={(e)=>updatePatientDeatils(e)}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
             <h3 className='text-center'>Current Appointments</h3>
@@ -55,7 +178,9 @@ export const ViewAppointment = () => {
     </div>
     <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
-            <table className='table table-bordered table-striped'>
+            {
+                Appointments.length!=0 && 
+                <table className='table table-bordered table-striped'>
                 <thead className='bg-info text-light'>
                     <tr>
                         <th>Sr.</th>
@@ -77,7 +202,7 @@ export const ViewAppointment = () => {
                             <td>{appointment.patientsdetails.firstName + " " + appointment.patientsdetails.lastName}</td>
                             <td>{appointment.discription}</td>
                            
-                            <td><button className='btn btn-success btn-sm'>Attend</button>&nbsp;
+                            <td><button className='btn btn-success btn-sm' onClick={(e)=>getDetails(e,appointment.patientId,appointment._id)}>Attend</button>&nbsp;
                             <button className='btn btn-danger btn-sm' onClick={(e)=>cancelAppointment(e,appointment._id)}>Cancel</button></td>
                         </tr>
                     }
@@ -85,6 +210,13 @@ export const ViewAppointment = () => {
                 </tbody>
                 
             </table>
+            }
+            {
+                Appointments.length==0 &&
+                <div className='card border p-5'>
+                     <h4 className='text-center text-secondary'>No appointment available</h4>
+                </div>
+            }
         </div>
     </div>
 
