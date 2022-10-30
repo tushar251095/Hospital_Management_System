@@ -1,18 +1,53 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from '../../services/doctorService'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const ViewAppointment = () => {
     const [Appointments,setAppointment]=useState([])
     useEffect(()=>{
+        ViewAppointment()
+    },[])
+    const ViewAppointment=()=>{
         axios.get('/view/appointments')
         .then(res=>{
             setAppointment(res.data);
             //console.log(res.data)
         })
-    },[])
+    }
+    const cancelAppointment=(e,id)=>{
+        e.preventDefault()
+        axios.put('/appointment/cancel/'+id)
+        .then((res)=>{
+           
+            if(res.data){
+                toast.success("Appointment cancelled successfully")
+                ViewAppointment()
+            }else{
+                toast.success("Something went wrong")
+            }
+            console.log(res)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
   return (
     <div className='container-fluid'>
+        <div>
+           <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </div>
     <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
             <h3 className='text-center'>Current Appointments</h3>
@@ -33,6 +68,7 @@ export const ViewAppointment = () => {
                 <tbody>
                     {Appointments.map((appointment,index) => {
                         return <tr key={index} >
+
                             <td>{index+1}</td>
                             <td>{
                                 new Date(appointment.appointmentTimestamp).toLocaleString()
@@ -41,7 +77,8 @@ export const ViewAppointment = () => {
                             <td>{appointment.patientsdetails.firstName + " " + appointment.patientsdetails.lastName}</td>
                             <td>{appointment.discription}</td>
                            
-                            <td><button className='btn btn-success btn-sm'>Attend</button>&nbsp;<button className='btn btn-danger btn-sm'>Cancel</button></td>
+                            <td><button className='btn btn-success btn-sm'>Attend</button>&nbsp;
+                            <button className='btn btn-danger btn-sm' onClick={(e)=>cancelAppointment(e,appointment._id)}>Cancel</button></td>
                         </tr>
                     }
                     )}

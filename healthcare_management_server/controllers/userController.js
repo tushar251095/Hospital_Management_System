@@ -46,13 +46,18 @@ exports.registerDoctor = (req, res, next) => {
   req.body.role="doctor"
   req.body.password=Math.random().toString(36).slice(-8)
   console.log( req.body.password)
-   let doctor = new Doctor(req.body);
+  
    let obj={
      email:req.body.email,
      password:req.body.password,
      role:req.body.role
    }
-   doctor
+   Spec.findOne({specId:req.body.specId})
+   .then((output)=>{
+      //console.log(output)
+      req.body.specialization=output.specName;
+      let doctor = new Doctor(req.body);
+      doctor
      .save()
      .then(() => {
        let user = new User(obj)
@@ -73,6 +78,9 @@ exports.registerDoctor = (req, res, next) => {
        }
        next(err);
      });
+   })
+   .catch(err=>next(err))
+   
  };
 
 let getDeatils=(role,email)=>{

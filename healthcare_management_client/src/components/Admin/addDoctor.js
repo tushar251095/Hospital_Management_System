@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../services/axios'
@@ -10,8 +10,22 @@ export const AddDoctor = () => {
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
-    const [specialization, setSpecialization] = useState("");
+    const [specId,setspecId]=useState("");
+    //const [specialization, setSpecialization] = useState("");
     const navigate=useNavigate()
+    const [specialities,setSpecialities] = useState([])
+    useEffect(() => {
+        axios.get('/get/specialities')
+        .then((result)=>{
+            setSpecialities(result.data)
+            //console.log(result.data)
+        })
+      },[]);
+    //   const setValue=(value)=>{
+    //             const arr=value.split(":");
+    //             setspecId(arr[0]);
+    //             setSpecialization(arr[1]);
+    //   }
     const handleSubmit  = (e) => {
         e.preventDefault();
          let obj = {
@@ -19,8 +33,10 @@ export const AddDoctor = () => {
              lastName : lastName,
              email:email,
              contact:contact,
-             specialization:specialization,
+            //  specialization:specialization,
+             specId:specId
          }     
+        // console.log(obj)
          axios.post('/doctor/register',obj)
          .then(res=>{
              if(res){
@@ -74,8 +90,15 @@ export const AddDoctor = () => {
                 <label className='lables'>Phone No.:</label>
                 <input type={"text"} id="contact" value={contact} onChange = {(e) => setContact(e.target.value)} placeholder="Enter your contact" className='form-control'/><br/>
                 <label className='lables'>Specialization:</label>
-                <input type={"text"} id="specialization" value={specialization} onChange = {(e) => setSpecialization(e.target.value)} placeholder="Enter your contact" className='form-control'/><br/>
-                <div className='text-center'>
+                {/* <input type={"text"} id="specialization" value={specialization} onChange = {(e) => setSpecialization(e.target.value)} placeholder="Enter your contact" className='form-control'/><br/> */}
+                <select value={specId} onChange={(e) => setspecId(e.target.value)} className="form-control">
+                    {
+                        specialities.map((spec,index)=>(
+                            <option key={index} value={spec.specId}>{spec.specName}</option>    
+                        ))
+                    }
+                </select>
+                <div className='text-center mt-3'>
                     <button onClick={(e)=>handleSubmit(e)} tyep="submit" className='btn btn-primary w-50'>Submit</button>
                 </div>
                

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import '../../assets/CSS/common.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,7 +13,9 @@ export const ManageSchedule = () => {
     const [startTime, setStartTime] = useState('10:00');
     const [endTime, setEndTime] = useState('10:00');
     const [days, setdays] = useState([]);
+    const [displaydays, setdisplaydays] = useState([]);
     const [slot, setSlot] = useState("5");
+    const [isAvailble, setisAvailble] = useState(false);
     const navigate=useNavigate();
     const checkList = ["Sunday", "Monday", "Tuesday", "Wednesday","Thrusday","Friday","Saturday"];
     const handleCheck = (event) => {
@@ -25,7 +27,28 @@ export const ManageSchedule = () => {
         }
         setdays(updatedList);
       };
+      useEffect(() => {
+        axios.get('/schedule/'+localStorage.getItem('id'))
+        .then(res=>{
+            //console.log(res.data[0].schedule.length)
+            if(res.data[0].schedule.length===0){
+                setisAvailble(false)
+            }else{
+                setisAvailble(true)
+                setdisplaydays(res.data[0].schedule[0].days)
+                setSlot(res.data[0].schedule[0].slot)
+                setEndDate(new Date(res.data[0].schedule[0].endDate))
+                const startTimeArr=res.data[0].schedule[0].startTime
+                const endTimeArr=res.data[0].schedule[0].endTime
+                setStartTime(startTimeArr)
+                setEndTime(endTimeArr)
+            }
+        })
+        .catch(error=>{
 
+            console.log(error)
+        })
+    },[]);
       const generateSchedule=(e)=>{
         e.preventDefault();
          let obj={
@@ -64,13 +87,92 @@ export const ManageSchedule = () => {
                 pauseOnHover
                 theme="light"
             />
-        <div className='row'>
+            <div className='row'>
             <div className='col-sm-12'>
                 <h3 className='text-center mt-3'>Manage Schedule</h3>
             </div>
         </div>
-        <div className='row justify-content-center'>
+            {
+                !isAvailble && 
+                <div className='row g-0 p-3'>
+                    <div className='col-sm-12'>
+                        <div className='card border border-secondary p-5'>
+                            <h3 className='text-center text-secondary'>No Schedule present please generate one.</h3>
+                            <div  className='text-center mt-3'>
+                                <button className='btn btn-primary w-25' onClick={()=>setisAvailble(!isAvailble)}>Generate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        {
+             isAvailble && 
+             <div className='row justify-content-center'>
+             <div className='col-sm-6 card p-5'>
+                <h4 className='text-center text-secondary'>Current Schedule</h4>
+                <div className='mt-3'>
+                    <table className='table table-bordered table-striped'>
+                        <tbody>
+                        <tr>
+                            <th>Start Time</th>
+                            <td>{startTime}</td>
+                        </tr>
+                        <tr>
+                            <th>End Time</th>
+                            <td>{endTime}</td>
+                        </tr>
+                        <tr>
+                            <th>Per slot time:</th>
+                            <td>{slot}</td>
+                        </tr>
+                        <tr>
+                            <th>Days of week:</th>
+                            <td> &nbsp;{
+                                  displaydays.map((day,index)=>(
+                                   
+                                        <span>
+                                            {
+                                             day===0 &&
+                                                <span>Sunday | </span>
+                                            }
+                                            {
+                                             day===1 &&
+                                                <span>Monday | </span>
+                                            } 
+                                            {
+                                             day===2 &&
+                                                <span>Tuesday | </span>
+                                            } 
+                                            {
+                                             day===3 &&
+                                                <span>Wednesday | </span>
+                                            } 
+                                            {
+                                             day===4 &&
+                                                <span>Thrusday | </span>
+                                            } 
+                                            {
+                                             day===5 &&
+                                                <span>Friday | </span>
+                                            } 
+                                            {
+                                             day===6 &&
+                                                <span>Saturday | </span>
+                                            } 
+                                            </span>
+                                  ))
+                                }</td>
+                        </tr>
+                        <tr>
+                            <th>End Date:</th>
+                            <td>{endDate.toLocaleDateString()}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+             </div>
             <div className='col-sm-6 card p-5'>
+                <h4 className='text-center text-secondary'>Add/Change Schedule</h4>
                 <label className='lables'>Start time: </label>
                 <TimePicker onChange={(time) => setStartTime(time)} disableClock value={startTime} className='form-control'/><br/>
                 <label className='lables'>End time: </label>
@@ -95,6 +197,9 @@ export const ManageSchedule = () => {
                 <button className='btn btn-primary w-50' onClick={(e) => generateSchedule(e)}>Generate</button>
             </div>
         </div>
+        }
+        
+        
     </div>
   )
 }

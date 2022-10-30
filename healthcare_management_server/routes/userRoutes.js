@@ -18,4 +18,5 @@ router.post("/add/speciality",controller.addSpecialities);
 
 //API for add speciality
 router.get("/get/specialities",jwt.verifyToken,controller.geAllSpecialities);
+
 module.exports=router;

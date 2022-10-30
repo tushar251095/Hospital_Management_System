@@ -8,7 +8,8 @@ const mainHeader={
         backgroundColor:'#BDC9EA',
         // position:'fixed',
         zIndex:'999',
-        top:"0"
+        top:"0",
+        height:'82px'
     },
     title:{
         fontFamily:'sans-serif'
@@ -40,7 +41,7 @@ const Header=()=>{
             <div className='row g-0'>
                 <div className="col-sm-5 logo">
                     <Link to={"/"}>
-                    <img src={imageBasePath} className="float-start ms-4 mt-2 linkTag" alt="logo" height='70' width='60'/>
+                    <img src={imageBasePath} className="float-start ms-4 mt-2 linkTag" alt="logo" height='70' width='70'/>
                     </Link>
                     <Link to={"/"}>
                     <h4 className="mt-4 pt-1 linkTag">&nbsp;HMS</h4>
@@ -55,7 +56,7 @@ const Header=()=>{
                     <h3 className='mainHeader.brandName'>&nbsp;Healthy Life</h3>
                 </div> */}
                 <div className='col-sm-7'>
-                    <ul className="list-group list-group-horizontal mt-5 float-end" >
+                    <ul className="list-group list-group-horizontal mt-4 float-end" >
                         {
                             !localStorage.getItem('token') &&  <li className="list-group-item" style={mainHeader.listgroupitem}>
                             <Link to="/user/registartion" className='linkTag'>Sign up</Link>

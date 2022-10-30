@@ -11,6 +11,7 @@ export const AuthProvider=({children})=>{
         const name=decoded.firstName + " "+decoded.lastName;
         localStorage.setItem('name',name);
         localStorage.setItem('role',decoded.role);
+        localStorage.setItem('id',decoded.id);
         setUser(localStorage.getItem('name'))
     }
 

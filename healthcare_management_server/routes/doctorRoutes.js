@@ -8,4 +8,6 @@ router.post("/generate/schedule",jwt.verifyToken,controller.GenerateSchedule);
 router.get("/specality/:id",jwt.verifyToken,controller.GetDoctors);
 router.get("/schedule/:id",jwt.verifyToken,controller.GetSchedule);
 router.get("/view/appointments",jwt.verifyToken,controller.GetAppointment);
+router.put("/appointment/cancel/:id",jwt.verifyToken,controller.cancelAppointment);
+
 module.exports=router;

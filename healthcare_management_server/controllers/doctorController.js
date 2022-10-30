@@ -7,13 +7,17 @@ const jwtMiddleware = require("../middleware/jwt");
 exports.GenerateSchedule = (req,res,next)=>{
     let token = req.headers.authorization.split(" ")[1];
     let userinfo = jwtMiddleware.decodeJWT(token);
-    Doctor.updateOne({ email: userinfo.email }, { $push: { schedule: req.body } })
-    .then((result) => {
-      if (result.acknowledged == true) {
-        res.send(true);
-      } else {
-        res.send(false);
-      }
+    Doctor.updateOne({ email: userinfo.email },{$set:{"schedule":[]}})
+    .then(()=>{
+      Doctor.updateOne({ email: userinfo.email }, { $push: { schedule: req.body } })
+      .then((result) => {
+        if (result.acknowledged == true) {
+          res.send(true);
+        } else {
+          res.send(false);
+        }
+      })
+      .catch((err) => next(err));
     })
     .catch((err) => next(err));
 }
@@ -83,4 +87,17 @@ exports.GetAppointment=(req,res,next)=>{
     res.send(result)
 })
 .catch(error=>(next(error)))
+}
+
+
+exports.cancelAppointment=(req,res,next)=>{
+  Appointment.updateOne({_id:req.params.id},{$set:{"status":"cancelled"}})
+  .then((result)=>{
+      if(result.acknowledged){
+         res.send(true)
+      }else{
+        res.send(false)
+      }
+  })
+  .catch(err=>next(err))
 }
