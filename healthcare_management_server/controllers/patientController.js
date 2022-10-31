@@ -1,4 +1,4 @@
-// const  Patient = require("../model/patientModel");
+const  Patient = require("../model/patientModel");
 // const  User = require("../model/masterUser");
 const  Doctor = require("../model/doctorModel");
 const  Appointment = require("../model/appointmentModel");
@@ -57,4 +57,16 @@ exports.GetAppointments=(req,res,next)=>{
         res.send(result)
     })
     .catch(error=>(next(error)))
+}
+
+exports.SearchPatient=(req,res,next)=>{
+    let obj={}
+    req.body.query=req.body.query.toLowerCase()
+    obj[req.body.field]={$regex:"^"+req.body.query}
+    Patient.find(obj)
+    .then((result)=>{
+        console.log(result);
+        res.send(result);
+    })
+    .catch(err=>next(err))
 }

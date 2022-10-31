@@ -6,4 +6,5 @@ const jwt = require('../middleware/jwt')
 //API for categories page
 router.post("/book/appoitnment",jwt.verifyToken,controller.BookAppointment);
 router.get("/get/appoitnments",jwt.verifyToken,controller.GetAppointments);
+router.post("/search",jwt.verifyToken,controller.SearchPatient);
 module.exports=router;

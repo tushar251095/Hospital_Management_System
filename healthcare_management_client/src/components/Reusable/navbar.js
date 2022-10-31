@@ -13,11 +13,20 @@ const Navbar=()=>{
             <div className='row g-0 p-1'>
                 <div className='col-sm-10'>
                     <ul className="list-group list-group-horizontal" >
-                        <li className="list-group-item listgroupitem">
+                        {
+                            localStorage.getItem('token') && localStorage.getItem('patient')=='admin' && 
+                            <li className="list-group-item listgroupitem">
                             <Link className='linkTag'>Appointment</Link>
                         </li>
+                        }
+                        {
+                            localStorage.getItem('token') && (localStorage.getItem('role')=='doctor' || localStorage.getItem('role')=='admin') &&
+                            <li className="list-group-item listgroupitem">
+                            <Link className='linkTag' to="/user/doctor/search/patient">Search Patient</Link>
+                        </li>
+                        }
                         <li className="list-group-item listgroupitem">
-                        <Link className='linkTag'>Records</Link>
+                        <Link className='linkTag' to="/user/doctor/search/patient">Records</Link>
                         </li>
                         {
                             localStorage.getItem('token') && localStorage.getItem('role')=='admin' &&  <li className="list-group-item listgroupitem">

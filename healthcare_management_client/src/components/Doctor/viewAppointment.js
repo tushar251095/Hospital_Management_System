@@ -22,10 +22,10 @@ export const ViewAppointment = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(()=>{
-        ViewAppointment()
+        ViewAppointment("pending")
     },[])
-    const ViewAppointment=()=>{
-        axios.get('/view/appointments')
+    const ViewAppointment=(data)=>{
+        axios.post('/view/appointments',{status:data})
         .then(res=>{
             setAppointment(res.data);
             //console.log(res.data)
@@ -69,7 +69,7 @@ export const ViewAppointment = (props) => {
            
             if(res.data){
                 toast.success("Appointment cancelled successfully")
-                ViewAppointment()
+                ViewAppointment("pending")
             }else{
                 toast.success("Something went wrong")
             }
@@ -97,7 +97,7 @@ export const ViewAppointment = (props) => {
            if(res.data){
             handleClose()
            }
-           ViewAppointment()
+           ViewAppointment("pending")
         })
         console.log(obj)
     }
@@ -126,6 +126,7 @@ export const ViewAppointment = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          
             <div className='row'>
                 <div className='col-sm-12'>
                     <div className='text-end'>
@@ -143,7 +144,7 @@ export const ViewAppointment = (props) => {
                     <span style={{fontSize:'18px'}}>
                         {age}
                     </span> <br/>
-                    <label className='lables'>Geder: &nbsp;</label>
+                    <label className='lables'>Gender: &nbsp;</label>
                     <span style={{fontSize:'18px'}}>
                         {gender}
                     </span><br/>
@@ -173,9 +174,18 @@ export const ViewAppointment = (props) => {
       </Modal>
     <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
-            <h3 className='text-center'>Current Appointments</h3>
+            <h3 className='text-center'>Appointments</h3>
         </div>
     </div>
+    <div className='row'>
+                <div className='col-sm-12'>
+                    <div className='float-end'>
+                        <button className='btn btn-secondary ms-2  btn-sm' onClick={()=>{ViewAppointment("attended")}}>Attended</button>
+                        <button className='btn btn-info ms-2  btn-sm' onClick={()=>{ViewAppointment("pending")}}>Unattended</button>
+                        <button className='btn btn-danger ms-2  btn-sm' onClick={()=>{ViewAppointment("cancelled")}}>Cancelled</button>
+                    </div>
+                </div>
+            </div>
     <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
             {
@@ -202,8 +212,24 @@ export const ViewAppointment = (props) => {
                             <td>{appointment.patientsdetails.firstName + " " + appointment.patientsdetails.lastName}</td>
                             <td>{appointment.discription}</td>
                            
-                            <td><button className='btn btn-success btn-sm' onClick={(e)=>getDetails(e,appointment.patientId,appointment._id)}>Attend</button>&nbsp;
-                            <button className='btn btn-danger btn-sm' onClick={(e)=>cancelAppointment(e,appointment._id)}>Cancel</button></td>
+                            <td>
+                                {
+                                    appointment.status=="pending" && 
+                                    <div>
+                                        <button className='btn btn-success btn-sm' onClick={(e)=>getDetails(e,appointment.patientId,appointment._id)}>Attend</button>&nbsp;
+                                        <button className='btn btn-danger btn-sm' onClick={(e)=>cancelAppointment(e,appointment._id)}>Cancel</button>
+                                    </div>  
+                                }
+                                {
+                                     appointment.status=="attended" && 
+                                     <p className='text-success'>Attended</p>
+                                }
+                                 {
+                                     appointment.status=="cancelled" && 
+                                     <p className='text-danger'>Cancelled</p>
+                                }
+                                
+                            </td>
                         </tr>
                     }
                     )}

@@ -59,7 +59,7 @@ exports.GetAppointment=(req,res,next)=>{
     {
         $match:{
             doctorId:userinfo.id,
-            status:"pending"
+            status:req.body.status
         }
     },
     {

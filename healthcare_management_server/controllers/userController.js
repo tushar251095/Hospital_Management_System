@@ -9,6 +9,9 @@ exports.registerUser = (req, res, next) => {
  //console.log(req.body);
  req.body.patientId = uuidv4();
  req.body.role="patient"
+ req.body.firstName=req.body.firstName.toLowerCase()
+ req.body.lastName=req.body.lastName.toLowerCase()
+ req.body.email=req.body.email.toLowerCase()
   let patient = new Patient(req.body);
   let obj={
     email:req.body.email,
@@ -46,7 +49,9 @@ exports.registerDoctor = (req, res, next) => {
   req.body.role="doctor"
   req.body.password=Math.random().toString(36).slice(-8)
   console.log( req.body.password)
-  
+  req.body.firstName=req.body.firstName.toLowerCase()
+  req.body.lastName=req.body.lastName.toLowerCase()
+  req.body.email=req.body.email.toLowerCase()
    let obj={
      email:req.body.email,
      password:req.body.password,
