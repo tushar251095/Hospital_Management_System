@@ -62,7 +62,8 @@ exports.GetAppointments=(req,res,next)=>{
 exports.SearchPatient=(req,res,next)=>{
     let obj={}
     req.body.query=req.body.query.toLowerCase()
-    obj[req.body.field]={$regex:"^"+req.body.query}
+    obj[req.body.field]={$regex: new RegExp("^"+req.body.query)}
+    console.log(obj)
     Patient.find(obj)
     .then((result)=>{
         console.log(result);

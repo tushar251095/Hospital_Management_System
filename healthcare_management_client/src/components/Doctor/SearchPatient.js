@@ -30,7 +30,7 @@ export const SearchPatient = () => {
           <div className='col-sm-12'> 
               <label className='lables'>Select Field  to search</label>
               <select className='form-control w-25' value={field} onChange={(e)=>setField(e.target.value)}>
-                  <option  className='form-control' value="fistName">First Name</option>
+                  <option  className='form-control' value="firstName">First Name</option>
                   <option  className='form-control' value="lastName">Last Name</option>
               </select>
           </div>
