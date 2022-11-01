@@ -19,6 +19,8 @@ export const ViewAppointment = (props) => {
     const [show, setShow] = useState(false);
     const [patientId, setpatientId] = useState(false);
     const [appId, setappId] = useState(false);
+    const [comment,setComment] =useState("");
+    const [prescription,setPrescription]= useState("");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(()=>{
@@ -89,7 +91,9 @@ export const ViewAppointment = (props) => {
             bloodGroup:bloodGroup,
             sugarLevel:sugarLevel,
             patientId:patientId,
-            appId:appId
+            appId:appId,
+            comment:comment,
+            prescription:prescription
 
         }
         axios.post('/update/patient/details',obj)
@@ -152,12 +156,16 @@ export const ViewAppointment = (props) => {
                     <input type={"text"} id="height" value={height} onChange = {(e) => setHeight(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
                     <label className='lables'>Weight: &nbsp;</label>
                     <input type={"text"} id="weight" value={weight} onChange = {(e) => setWeight(e.target.value)} placeholder="Enter patient's weight" className='form-control'/><br/>
-                    <label className='lables'>Blood Level: &nbsp;</label>
+                    <label className='lables'>Blood Pressure: &nbsp;</label>
                     <input type={"text"} id="bloodPressure" value={bloodPressure} onChange = {(e) => setBloodPressure(e.target.value)} placeholder="Enter patient's blood pressure" className='form-control'/><br/>
                     <label className='lables'>Sugar Level: &nbsp;</label>
                     <input type={"text"} id="sugarLevel" value={sugarLevel} onChange = {(e) => setSugarLevel(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
                     <label className='lables'>Blood Group: &nbsp;</label>
                     <input type={"text"} id="bloodGroup" value={bloodGroup} onChange = {(e) => setBloodGroup(e.target.value)} placeholder="Enter patient's height" className='form-control'/><br/>
+                    <label className='lables'>Comment: &nbsp;</label>
+                    <textarea value={comment} onChange = {(e) => setComment(e.target.value)} placeholder="Enter comments" className='form-control'/><br/>
+                    <label className='lables'>Prescription: &nbsp;</label>
+                    <textarea value={prescription} onChange = {(e) => setPrescription(e.target.value)} placeholder="Enter prescription" className='form-control'/><br/>
                 </div>
             </div>
            

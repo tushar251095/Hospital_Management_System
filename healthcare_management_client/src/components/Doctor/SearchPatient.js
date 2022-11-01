@@ -1,11 +1,31 @@
 import React from 'react'
 import axios from '../../services/patientService'
-import { useState } from 'react'
-export const SearchPatient = () => {
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+export const SearchPatient = (props) => {
   const [field,setField]=useState("firstName");
   const [query,setQuery]=useState("");
   const [list,setList]=useState([]);
-
+  const [profile,setProfile]=useState([]);
+  const navigate=useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const displayPatientProfile=(e,id)=>{
+    axios.get('/profile/'+id)
+    .then((result)=>{
+      setProfile(result.data)
+      handleShow()
+      console.log(result)
+    })
+  }
+  const getPatientHistory=(e,id)=>{
+    e.preventDefault()
+    localStorage.setItem("patientId",id)
+    navigate("/user/doctor/patient/history")
+  }
   const getPatients=(e)=>{
     e.preventDefault();
     let obj={
@@ -67,8 +87,8 @@ export const SearchPatient = () => {
                                 <td>{patient.email}</td>
                                 <td>{patient.contact}</td>
                                 <td>
-                                  <button className='btn btn-sm btn-primary'>Profile</button>&nbsp;
-                                  <button className='btn btn-sm btn-secondary'>Records</button>
+                                  <button className='btn btn-sm btn-primary' onClick={(e)=>displayPatientProfile(e,patient.patientId)}>Profile</button>&nbsp;
+                                  <button className='btn btn-sm btn-secondary' onClick={(e)=>getPatientHistory(e,patient.patientId)}>Records</button>
                                 </td>
                             </tr>
                         ))
@@ -77,6 +97,83 @@ export const SearchPatient = () => {
               </table>
           </div>
         </div>
+        <Modal {...props} size="lg" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+                <h4>Patient Profile</h4>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          
+        <label className='lables'>Full Name: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {profile.firstName+" "+profile.lastName}
+                    </span> <br/>
+                    <label className='lables'>Age: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {profile.age}
+                    </span> <br/>
+                    <label className='lables'>Gender: &nbsp;</label>
+                    <span style={{fontSize:'18px'}}>
+                        {profile.gender}
+                    </span><br/>
+                    <label className='lables'>Weight: &nbsp;</label>
+                    {
+                            profile.weight == undefined && 
+                            <span style={{fontSize:'18px'}}>N/A<br/></span>
+                        }
+                        {
+                            profile.weight != undefined && 
+                            <span style={{fontSize:'18px'}}>{profile.weight}<br/></span>
+                        }
+                    <label className='lables'>Height: &nbsp;</label>
+                    {
+                            profile.height == undefined && 
+                            <span style={{fontSize:'18px'}}>N/A<br/></span>
+                        }
+                        {
+                            profile.height != undefined && 
+                            <span style={{fontSize:'18px'}}>{profile.height}<br/></span>
+                        }
+                    <label className='lables'>Blood Pressure: &nbsp;</label>
+                    
+                        {
+                            profile.bloodPressure == undefined && 
+                            <span style={{fontSize:'18px'}}>N/A<br/></span>
+                        }
+                        {
+                            profile.bloodPressure != undefined && 
+                            <span style={{fontSize:'18px'}}>{profile.bloodPressure}<br/></span>
+                        }
+
+                    
+                    <label className='lables'>Sugar Level: &nbsp;</label>
+                    {
+                            profile.sugarLevel == undefined && 
+                            <span style={{fontSize:'18px'}}>N/A<br/></span>
+                        }
+                        {
+                            profile.sugarLevel != undefined && 
+                            <span style={{fontSize:'18px'}}>{profile.sugarLevel}<br/></span>
+                        }
+                    <label className='lables'>Blood Group: &nbsp;</label>
+                    {
+                            profile.bloodGroup == undefined && 
+                            <span style={{fontSize:'18px'}}>N/A<br/></span>
+                        }
+                        {
+                            profile.bloodGroup != undefined && 
+                            <span style={{fontSize:'18px'}}>{profile.bloodGroup}<br/></span>
+                        }
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

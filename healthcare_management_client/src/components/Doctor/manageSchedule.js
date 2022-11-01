@@ -130,7 +130,7 @@ export const ManageSchedule = () => {
                             <td> &nbsp;{
                                   displaydays.map((day,index)=>(
                                    
-                                        <span>
+                                        <span key={index}>
                                             {
                                              day===0 &&
                                                 <span>Sunday | </span>

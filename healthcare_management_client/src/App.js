@@ -18,6 +18,7 @@ import { AddDoctor } from './components/Admin/addDoctor';
 import BookAppointment from './components/Patient/bookAppointment';
 import {RequireAuth} from './utlis/RequireAuth'
 import { AuthProvider } from './utlis/AuthProvider';
+import PatientHistory from './components/Doctor/patientHistory';
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom'
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path="/user/doctor/schedule" element={<ManageSchedule/>}/>
               <Route path="/user/doctor/view/appointments" element={<ViewAppointment/>}/>
               <Route path="/user/doctor/search/patient" element={<SearchPatient/>}/>
+              <Route path="/user/doctor/patient/history" element={<PatientHistory/>}/>
             </Route>
           </Routes>
           <Footer/>

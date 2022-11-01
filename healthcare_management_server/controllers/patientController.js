@@ -71,3 +71,47 @@ exports.SearchPatient=(req,res,next)=>{
     })
     .catch(err=>next(err))
 }
+
+exports.GetProfile=(req,res,next)=>{
+    //console.log(req.body)
+    Patient.findOne({patientId:req.params.id},{_id:0,firstName:1,lastName:1,age:1,gender:1,height:1,weight:1,bloodPressure:1,bloodGroup:1,sugarLevel:1,patientId:1})
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch(err=>next(err))
+}
+
+exports.GetHistory=(req,res,next)=>{
+    Appointment.aggregate([
+        {
+            $match:{
+                patientId:req.params.id
+            }
+        },
+        {
+            $lookup: {
+                from: 'doctors',
+                localField:'doctorId',
+                foreignField:'doctorId',
+                pipeline:[
+                    {
+                        $project:{
+                            firstName:1,
+                            lastName:1,
+                            _id:0
+                        }
+                    }
+                ],
+                as:'doctordetails'
+            }
+        },
+        {
+            $unwind:{path:'$doctordetails'}
+        }
+       
+    ])
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch(err=>next(err))
+}

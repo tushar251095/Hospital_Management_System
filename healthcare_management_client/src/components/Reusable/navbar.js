@@ -14,9 +14,15 @@ const Navbar=()=>{
                 <div className='col-sm-10'>
                     <ul className="list-group list-group-horizontal" >
                         {
-                            localStorage.getItem('token') && localStorage.getItem('patient')=='admin' && 
+                            localStorage.getItem('token') && localStorage.getItem('role')=='patient' && 
                             <li className="list-group-item listgroupitem">
                             <Link className='linkTag'>Appointment</Link>
+                        </li>
+                        }
+                        {
+                            localStorage.getItem('token') && localStorage.getItem('role')=='patient' && 
+                            <li className="list-group-item listgroupitem">
+                            <Link className='linkTag'>Records</Link>
                         </li>
                         }
                         {
@@ -25,9 +31,6 @@ const Navbar=()=>{
                             <Link className='linkTag' to="/user/doctor/search/patient">Search Patient</Link>
                         </li>
                         }
-                        <li className="list-group-item listgroupitem">
-                        <Link className='linkTag' to="/user/doctor/search/patient">Records</Link>
-                        </li>
                         {
                             localStorage.getItem('token') && localStorage.getItem('role')=='admin' &&  <li className="list-group-item listgroupitem">
                             <Link to="/add/doctor" className="linkTag">Add Doctor</Link>

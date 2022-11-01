@@ -7,4 +7,6 @@ const jwt = require('../middleware/jwt')
 router.post("/book/appoitnment",jwt.verifyToken,controller.BookAppointment);
 router.get("/get/appoitnments",jwt.verifyToken,controller.GetAppointments);
 router.post("/search",jwt.verifyToken,controller.SearchPatient);
+router.get("/profile/:id",jwt.verifyToken,controller.GetProfile);
+router.get("/history/:id",jwt.verifyToken,controller.GetHistory);
 module.exports=router;
