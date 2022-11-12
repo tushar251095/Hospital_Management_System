@@ -16,13 +16,7 @@ const Navbar=()=>{
                         {
                             localStorage.getItem('token') && localStorage.getItem('role')=='patient' && 
                             <li className="list-group-item listgroupitem">
-                            <Link className='linkTag'>Appointment</Link>
-                        </li>
-                        }
-                        {
-                            localStorage.getItem('token') && localStorage.getItem('role')=='patient' && 
-                            <li className="list-group-item listgroupitem">
-                            <Link className='linkTag'>Records</Link>
+                            <Link className='linkTag' to="/user/patient/records">Records</Link>
                         </li>
                         }
                         {
@@ -36,6 +30,13 @@ const Navbar=()=>{
                             <Link to="/add/doctor" className="linkTag">Add Doctor</Link>
                          </li>
                         }
+                           {
+                            localStorage.getItem('token') && (localStorage.getItem('role')=='patient' || localStorage.getItem('role')=='doctor') &&
+                            <li className="list-group-item listgroupitem">
+                            <Link className='linkTag' to="/user/profile">Profile</Link>
+                        </li>
+                        }
+                          
                      </ul>
                 </div>
                 {

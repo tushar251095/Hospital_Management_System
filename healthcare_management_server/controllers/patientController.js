@@ -28,7 +28,7 @@ exports.GetAppointments=(req,res,next)=>{
         {
             $match:{
                 patientId:userinfo.id,
-                status:"pending"
+                status:req.params.status
             }
         },
         {

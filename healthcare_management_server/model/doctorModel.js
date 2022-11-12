@@ -9,6 +9,7 @@ const doctorSchema = new Schema({
     specialization: { type: String, required: [true, 'specialization is required'] },
     specId: {type: String, required: [true, 'specId required']},
     role: { type: String, default:"doctor" },
+    gender: { type: String, required: [true, 'Gender required'] },
     schedule: { type: Array, default:[] },
 },
 {

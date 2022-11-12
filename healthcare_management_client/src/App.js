@@ -14,6 +14,9 @@ import DoctorList from './components/Patient/doctorList';
 import MyAppointment from './components/Patient/myAppointment';
 import ViewAppointment from './components/Doctor/viewAppointment';
 import SearchPatient from './components/Doctor/SearchPatient';
+import GetDoctors from './components/Admin/getDoctors';
+import PatientRecords from './components/Patient/patientRecords';
+import Profile from './components/profile';
 import { AddDoctor } from './components/Admin/addDoctor';
 import BookAppointment from './components/Patient/bookAppointment';
 import {RequireAuth} from './utlis/RequireAuth'
@@ -26,17 +29,22 @@ function App() {
     <Router>
         <div className="App d-flex flex-column min-vh-100">
           <Header/>
-          <Navbar/>
+          {
+            localStorage.getItem('token') !=null &&  <Navbar/>
+          }
+         
           <Routes>
             <Route exact path="/" element={<Homepage/>} />
             <Route path="/user/registartion" element={<UserRegistration/>} />
             <Route path="/user/login" element={<Login/>}/>
             <Route element={ <RequireAuth allowedRoles={["admin"]}/>}>
                 <Route path="/user/admin" element={<Admin/>}/>
+                <Route path="/view/doctors" element={<GetDoctors/>}/>
                 <Route path="/add/doctor" element={<AddDoctor/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["patient"]}/>}>
                 <Route path="/user/patient" element={<Patient/>}/>
+                <Route path="/user/patient/records" element={<PatientRecords/>}/>
                 <Route path="/user/patient/specialities" element={<Specialities/>}/>
                 <Route path="/user/patient/bookappointment" element={<BookAppointment/>}/>
                 <Route path="/user/patient/doctorlist" element={<DoctorList/>}/>
@@ -46,8 +54,13 @@ function App() {
               <Route path="/user/doctor" element={<Doctor/>}/>
               <Route path="/user/doctor/schedule" element={<ManageSchedule/>}/>
               <Route path="/user/doctor/view/appointments" element={<ViewAppointment/>}/>
+            </Route>
+            <Route element={ <RequireAuth allowedRoles={["doctor","admin"]}/>}>
               <Route path="/user/doctor/search/patient" element={<SearchPatient/>}/>
               <Route path="/user/doctor/patient/history" element={<PatientHistory/>}/>
+            </Route>
+            <Route element={ <RequireAuth allowedRoles={["doctor","patient"]}/>}>
+              <Route path="/user/profile" element={<Profile/>}/>
             </Route>
           </Routes>
           <Footer/>

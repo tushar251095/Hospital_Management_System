@@ -187,3 +187,51 @@ exports.addSpecialities=(req,res,next)=>{
    })
    .catch(error=>next(error))
 }
+
+exports.getDoctors=(req,res,next)=>{
+   Doctor.find()
+   .then((result)=>{
+      res.send(result)
+   })
+   .catch(error=>next(error))
+}
+
+exports.editProfile=(req,res,next)=>{
+  if(req.body.role=="doctor"){
+    Spec.findOne({specId:req.body.specId})
+    .then(result=>{
+       req.body.specialization=result.specName
+       Doctor.updateOne({doctorId:req.body.doctorId},{$set:req.body})
+       .then(result=>{
+          if(result.modifiedCount==1){
+            res.send(true)
+          }else{
+            res.send(false)
+          }
+         
+       })
+       .catch(err=>next(err))
+    })
+    .catch(err=>next(err))
+  }else{
+    res.send(false)
+  }
+ 
+}
+
+
+exports.getProfile=(req,res,next)=>{
+  if(req.params.user=="patient"){
+      Patient.findOne({patientId:req.params.id})
+      .then((result)=>{
+          res.send(result)
+      })
+      .catch(err=>next(err))
+  }else{
+    Doctor.findOne({doctorId:req.params.id})
+    .then((result)=>{
+      res.send(result)
+  })
+  .catch(err=>next(err))
+  }
+}

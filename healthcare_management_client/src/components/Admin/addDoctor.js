@@ -2,15 +2,17 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../services/axios'
-import 'react-toastify/dist/ReactToastify.css';
+
 export const AddDoctor = () => {
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
     const [specId,setspecId]=useState("");
+    const [gender, setGender] = useState("Male");
     //const [specialization, setSpecialization] = useState("");
     const navigate=useNavigate()
     const [specialities,setSpecialities] = useState([])
@@ -34,7 +36,8 @@ export const AddDoctor = () => {
              email:email,
              contact:contact,
             //  specialization:specialization,
-             specId:specId
+             specId:specId,
+             gender:gender
          }     
         // console.log(obj)
          axios.post('/doctor/register',obj)
@@ -85,6 +88,12 @@ export const AddDoctor = () => {
                 <input type={"text"} id="firstName" value={firstName} onChange = {(e) => setfirstName(e.target.value)} placeholder="Enter your first name" className='form-control'/><br/>
                 <label className='lables'>Last Name:</label>
                 <input type={"text"} id="lastName" value={lastName} onChange = {(e) => setlastName(e.target.value)} placeholder="Enter your last name" className='form-control'/><br/>
+                <label className='lables'>Gender:</label>
+                <select className='form-control' value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select><br/>
                 <label className='lables'>Email:</label>
                 <input type={"text"} id="email" value={email} onChange = {(e) => setEmail(e.target.value)} placeholder="Enter your email" className='form-control'/><br/>
                 <label className='lables'>Phone No.:</label>

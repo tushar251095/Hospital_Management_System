@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const ViewAppointment = (props) => {
     const [height, setHeight]= useState("");
@@ -23,6 +24,7 @@ export const ViewAppointment = (props) => {
     const [prescription,setPrescription]= useState("");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const navigate = useNavigate()
     useEffect(()=>{
         ViewAppointment("pending")
     },[])
@@ -37,6 +39,7 @@ export const ViewAppointment = (props) => {
        e.preventDefault()
        setpatientId(id)
        setappId(appid)
+       localStorage.setItem('patientId',id)
         axios.get("/get/patient/"+id)
         .then(res=>{
             setShow(true);
@@ -82,6 +85,9 @@ export const ViewAppointment = (props) => {
         })
     }
 
+    const GoToHistory=(e)=>{
+        navigate("/user/doctor/patient/history")
+    }
     const updatePatientDeatils=(e)=>{
         e.preventDefault();
         let obj={
@@ -134,7 +140,7 @@ export const ViewAppointment = (props) => {
             <div className='row'>
                 <div className='col-sm-12'>
                     <div className='text-end'>
-                        <button className='btn btn-primary btn-sm'>View History</button>
+                        <button className='btn btn-primary btn-sm' onClick={(e)=>GoToHistory(e)}>View History</button>
                     </div> 
                 </div>
             </div>

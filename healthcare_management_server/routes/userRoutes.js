@@ -19,4 +19,12 @@ router.post("/add/speciality",controller.addSpecialities);
 //API for add speciality
 router.get("/get/specialities",jwt.verifyToken,controller.geAllSpecialities);
 
+//API for add speciality
+router.get("/get/doctors",jwt.verifyToken,controller.getDoctors);
+
+//API for add speciality
+router.post("/edit/profile",jwt.verifyToken,controller.editProfile);
+
+//API for add speciality
+router.get("/get/profile/:id/:user",jwt.verifyToken,controller.getProfile);
 module.exports=router;
