@@ -4,7 +4,12 @@ const  Doctor = require("../model/doctorModel");
 const  Spec = require("../model/specialitiesModel");
 const  Hospital = require("../model/hospitalModel");
 const jwtMiddleware = require("../middleware/jwt");
+const mailServer = require("../mailserver/mailconfig")
 const { v4: uuidv4 } = require("uuid");
+
+const emailValidator = require('deep-email-validator');
+ 
+
 //api to add new user 
 exports.registerUser = (req, res, next) => {
  //console.log(req.body);
@@ -50,42 +55,56 @@ exports.registerDoctor = (req, res, next) => {
   req.body.role="doctor"
   req.body.password=Math.random().toString(36).slice(-8)
   console.log( req.body.password)
-  req.body.firstName=req.body.firstName.toLowerCase()
-  req.body.lastName=req.body.lastName.toLowerCase()
-  req.body.email=req.body.email.toLowerCase()
-   let obj={
-     email:req.body.email,
-     password:req.body.password,
-     role:req.body.role
-   }
-   Spec.findOne({specId:req.body.specId})
-   .then((output)=>{
-      //console.log(output)
-      req.body.specialization=output.specName;
-      let doctor = new Doctor(req.body);
-      doctor
-     .save()
-     .then(() => {
-       let user = new User(obj)
-       user. save()
-       .then(()=>{
-         res.send(true);
-       })
-       .catch((err) => {
-         if (err.name === "ValidationError") {
-           err.status = 400;
-         }
-         next(err);
-       });
-     })
-     .catch((err) => {
-       if (err.name === "ValidationError") {
-         err.status = 400;
+  emailValidator.validate(req.body.email)
+  .then(isvalid=>{
+    if(!isvalid.valid){
+      let err = new Error("Check your email address");
+      err.status = 404;
+      return next(err);
+    }else{
+      req.body.firstName=req.body.firstName.toLowerCase()
+      req.body.lastName=req.body.lastName.toLowerCase()
+      req.body.email=req.body.email.toLowerCase()
+       let obj={
+         email:req.body.email,
+         password:req.body.password,
+         role:req.body.role
        }
-       next(err);
-     });
-   })
-   .catch(err=>next(err))
+       Spec.findOne({specId:req.body.specId})
+       .then((output)=>{
+          //console.log(output)
+          req.body.specialization=output.specName;
+          let doctor = new Doctor(req.body);
+          doctor
+         .save()
+         .then(() => {
+           let user = new User(obj)
+           user. save()
+           .then(()=>{
+            mailServer.sendMail(req.body.email,"HMS doctor login password","Your login password for account"+" "+req.body.email+" is "+req.body.password)
+            res.send(true);
+           })
+           .catch((err) => {
+             if (err.name === "ValidationError") {
+               err.status = 400;
+             }
+             next(err);
+           });
+         })
+         .catch((err) => {
+           if (err.name === "ValidationError") {
+             err.status = 400;
+           }
+           next(err);
+         });
+       })
+       .catch(err=>next(err))
+    }
+  })
+  .catch(err=>next(err))
+ 
+ 
+ 
    
  };
 
