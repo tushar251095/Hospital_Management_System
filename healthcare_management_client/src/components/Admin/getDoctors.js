@@ -11,12 +11,13 @@ export const GetDoctors = (props) => {
             schedule:{}
         }
     ])
-    const [show, setShow] = useState(false);
+    
     const [Schedule, setSchedule] = useState({
         days:[],
 
     });
     const [isEdit, setisEdit]=useState(false)
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [specialities,setSpecialities] = useState([])

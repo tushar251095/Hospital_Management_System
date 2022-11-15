@@ -27,4 +27,11 @@ router.post("/edit/profile",jwt.verifyToken,controller.editProfile);
 
 //API for add speciality
 router.get("/get/profile/:id/:user",jwt.verifyToken,controller.getProfile);
+
+//API for add speciality
+router.post("/update/hospital/details",jwt.verifyToken,controller.AdminUpdateHospitalDetails);
+
+router.get("/get/hospital/details",jwt.verifyToken,controller.getHospitalDetails);
+
+router.delete("/delete/hospital/details/:id",jwt.verifyToken,controller.deleteHospitaldetails);
 module.exports=router;

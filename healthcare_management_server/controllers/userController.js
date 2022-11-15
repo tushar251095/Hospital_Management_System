@@ -2,6 +2,7 @@ const  Patient = require("../model/patientModel");
 const  User = require("../model/masterUser");
 const  Doctor = require("../model/doctorModel");
 const  Spec = require("../model/specialitiesModel");
+const  Hospital = require("../model/hospitalModel");
 const jwtMiddleware = require("../middleware/jwt");
 const { v4: uuidv4 } = require("uuid");
 //api to add new user 
@@ -234,4 +235,37 @@ exports.getProfile=(req,res,next)=>{
   })
   .catch(err=>next(err))
   }
+}
+
+exports.AdminUpdateHospitalDetails=(req,res,next)=>{
+      Hospital.updateOne({name:req.body.name},{$set:req.body}, {upsert: true})
+      .then(result=>{
+        if(result.acknowledged){
+          res.send(true)
+        }else{
+          res.send(false)
+        }
+          
+      })
+      .catch(err=>next(err))
+}
+
+exports.getHospitalDetails=(req,res,next)=>{
+  Hospital.find({})
+  .then(result=>{
+    res.send(result)
+  })
+  .catch(err=>next(err))
+}
+
+exports.deleteHospitaldetails=(req,res,next)=>{
+  Hospital.deleteOne({_id:req.params.id})
+  .then(result=>{
+    if(result.acknowledged){
+      res.send(true)
+    }else{
+      res.send(false)
+    }
+  })
+  .catch(err=>next(err))
 }

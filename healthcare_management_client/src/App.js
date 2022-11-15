@@ -16,6 +16,7 @@ import ViewAppointment from './components/Doctor/viewAppointment';
 import SearchPatient from './components/Doctor/SearchPatient';
 import GetDoctors from './components/Admin/getDoctors';
 import PatientRecords from './components/Patient/patientRecords';
+import HospitalDetails from './components/Admin/hospitalDetails';
 import Profile from './components/profile';
 import { AddDoctor } from './components/Admin/addDoctor';
 import BookAppointment from './components/Patient/bookAppointment';
@@ -40,6 +41,7 @@ function App() {
             <Route element={ <RequireAuth allowedRoles={["admin"]}/>}>
                 <Route path="/user/admin" element={<Admin/>}/>
                 <Route path="/view/doctors" element={<GetDoctors/>}/>
+                <Route path="/hospital/details" element={<HospitalDetails/>}/>
                 <Route path="/add/doctor" element={<AddDoctor/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["patient"]}/>}>
