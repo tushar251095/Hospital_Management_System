@@ -24,6 +24,9 @@ import {RequireAuth} from './utlis/RequireAuth'
 import { AuthProvider } from './utlis/AuthProvider';
 import PatientHistory from './components/Doctor/patientHistory';
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom'
+import ViewFacility from './components/Doctor/viewFacility';
+import ViewAdmitRequest from './components/Admin/viewAdmitRequest';
+
 function App() {
   return (
      <AuthProvider>
@@ -43,6 +46,7 @@ function App() {
                 <Route path="/view/doctors" element={<GetDoctors/>}/>
                 <Route path="/hospital/details" element={<HospitalDetails/>}/>
                 <Route path="/add/doctor" element={<AddDoctor/>}/>
+                <Route path="/admin/view/admit/request" element={<ViewAdmitRequest/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["patient"]}/>}>
                 <Route path="/user/patient" element={<Patient/>}/>
@@ -56,6 +60,7 @@ function App() {
               <Route path="/user/doctor" element={<Doctor/>}/>
               <Route path="/user/doctor/schedule" element={<ManageSchedule/>}/>
               <Route path="/user/doctor/view/appointments" element={<ViewAppointment/>}/>
+              <Route path="/user/doctor/view/facility/details" element={<ViewFacility/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["doctor","admin"]}/>}>
               <Route path="/user/doctor/search/patient" element={<SearchPatient/>}/>

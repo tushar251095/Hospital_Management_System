@@ -7,6 +7,7 @@ const appointmentSchema = new Schema({
     appointmentDetails: {type: Object, default:{}},
     status: {type: String, default:'pending'},
     discription:{type: String, required: [true, 'discription is required']},
+    isAdmitted:{type:String}
 },
 {
   timestamps:true

@@ -9,6 +9,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const emailValidator = require('deep-email-validator');
  
+const  Appointment = require("../model/appointmentModel");
 
 //api to add new user 
 exports.registerUser = (req, res, next) => {
@@ -285,6 +286,62 @@ exports.deleteHospitaldetails=(req,res,next)=>{
     }else{
       res.send(false)
     }
+  })
+  .catch(err=>next(err))
+}
+
+exports.viewRequest=(req,res,next)=>{
+ 
+  Appointment.aggregate([
+    {
+        $match:{
+            isAdmitted:req.body.status
+        }
+    },
+    {
+        $lookup: {
+            from: 'doctors',
+            localField:'doctorId',
+            foreignField:'doctorId',
+            pipeline:[
+                {
+                    $project:{
+                        firstName:1,
+                        lastName:1,
+                        _id:0
+                    }
+                }
+            ],
+            as:'doctordetails'
+        }
+    },
+    {
+        $unwind:{path:'$doctordetails'}
+    },
+    {
+      $lookup: {
+          from: 'patients',
+          localField:'patientId',
+          foreignField:'patientId',
+          pipeline:[
+              {
+                  $project:{
+                      firstName:1,
+                      lastName:1,
+                      _id:0
+                  }
+              }
+          ],
+          as:'patientDetails'
+      }
+  },
+  {
+    $unwind:{path:'$patientDetails'}
+}
+   
+])
+  .then(result=>{
+    res.send(result)
   })
   .catch(err=>next(err))
 }

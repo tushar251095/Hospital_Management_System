@@ -44,7 +44,6 @@ exports.GetSchedule=(req,res,next)=>{
     }
     let obj={booked:arr}
     result.push(obj)
-    //console.log(result)
     res.send(result)
   })
   .catch(error=>next(error))
@@ -106,7 +105,6 @@ exports.cancelAppointment=(req,res,next)=>{
 exports.GetPatient=(req,res,next)=>{
 Patient.findOne({patientId:req.params.id})
 .then(data=>{
-  console.log(data)
   res.send(data)
 })
 .catch(err=>next(err))
@@ -122,6 +120,15 @@ exports.updatePateintDetails=(req,res,next)=>{
           res.send(true);
       })
       .catch(err=>next(err))
+  })
+  .catch(err=>next(err))
+}
+
+exports.admitStatus=(req,res,next)=>{
+  Appointment.updateOne({'_id':req.body.appId},{$set:{'isAdmitted':req.body.isAdmitted}})
+  .then(result=>{
+    console.log(result)
+    res.send(result.acknowledged)
   })
   .catch(err=>next(err))
 }

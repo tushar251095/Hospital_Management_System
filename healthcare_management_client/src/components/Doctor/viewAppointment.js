@@ -17,17 +17,39 @@ export const ViewAppointment = (props) => {
     const [age, setAge]= useState("");
     const [gender, setGender]= useState("");
     const [Appointments,setAppointment]=useState([])
-    const [show, setShow] = useState(false);
+    
     const [patientId, setpatientId] = useState(false);
     const [appId, setappId] = useState(false);
     const [comment,setComment] =useState("");
     const [prescription,setPrescription]= useState("");
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const navigate = useNavigate()
     useEffect(()=>{
         ViewAppointment("pending")
     },[])
+    const sendAdmitRequest=(e)=>{
+        updatePatientDeatils(e)
+      
+            let Obj={
+                appId:appId,
+                isAdmitted:'pending'
+            }
+            axios.put('/update/admitStatus',Obj)
+            .then(result=>{
+                if(result.data){
+                    toast.success("Admit request send successfully")
+                }else{
+                    toast.error("Something went wrong")
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        
+    }
+
     const ViewAppointment=(data)=>{
         axios.post('/view/appointments',{status:data})
         .then(res=>{
@@ -88,7 +110,7 @@ export const ViewAppointment = (props) => {
     const GoToHistory=(e)=>{
         navigate("/user/doctor/patient/history")
     }
-    const updatePatientDeatils=(e)=>{
+     const updatePatientDeatils=(e)=>{
         e.preventDefault();
         let obj={
             height:height,
@@ -180,6 +202,9 @@ export const ViewAppointment = (props) => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>          
+          <Button variant="warning" onClick={(e)=>sendAdmitRequest(e)}>
+            Admit Request
           </Button>
           <Button variant="primary" onClick={(e)=>updatePatientDeatils(e)}>
             Save Changes

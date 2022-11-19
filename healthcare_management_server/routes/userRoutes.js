@@ -34,4 +34,8 @@ router.post("/update/hospital/details",jwt.verifyToken,controller.AdminUpdateHos
 router.get("/get/hospital/details",jwt.verifyToken,controller.getHospitalDetails);
 
 router.delete("/delete/hospital/details/:id",jwt.verifyToken,controller.deleteHospitaldetails);
+
+router.post("/get/admit",jwt.verifyToken,controller.viewRequest);
+
+
 module.exports=router;
