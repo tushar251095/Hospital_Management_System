@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../utlis/AuthProvider';
 import jwt_decode from "jwt-decode";
+import '../assets/CSS/background.css'
 export const login = () => {
     const [email, setEmail] =useState("");
     const [password, setPassword] =useState("");
@@ -48,8 +49,7 @@ export const login = () => {
         })
      }
   return (
-    <div>
-        <div className='container-fluid'>
+        <div className='container-fluid maincontent'>
         <div>
            <ToastContainer
                 position="top-center"
@@ -70,12 +70,12 @@ export const login = () => {
                 </div>
             </div>
             <div className='row g-0 justify-content-center pb-5 mt-3'>
-                <div className='col-sm-6'>
+                <div className='col-sm-5'>
                     <div className='card p-5'>
                         <label className='lables'>Username/Email: </label>
                         <input type="text" value={email} onChange = {(e) => handleInputChange(e)} id="email" placeholder='Username/Email' className='form-control'/>
                         <label className='lables'>Passowrd: </label>
-                        <input type="text" value={password} id="password" onChange = {(e) => handleInputChange(e)} placeholder='Enter your password' className='form-control'/>
+                        <input type="password" value={password} id="password" onChange = {(e) => handleInputChange(e)} placeholder='Enter your password' className='form-control'/>
                         <div className='text-center mt-3'>
                             <button onClick={(e)=>handleSubmit(e)} tyep="submit" className='btn btn-primary w-50'>Login</button>
                         </div>
@@ -83,7 +83,6 @@ export const login = () => {
                 </div>
             </div>
         </div>
-    </div>
   )
 }
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import '../../assets/CSS/common.css'
 import { useAuth } from '../../utlis/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+
 const mainHeader={
     main:{
         backgroundColor:'#BDC9EA',

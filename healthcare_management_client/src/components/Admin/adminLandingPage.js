@@ -9,6 +9,9 @@ const adminLandingPage = () => {
           <Card color="card-color-yellow" type='IconsS' icon="faBed" title="Admit Request" link="/admin/view/admit/request"/>
         </div>
         <div className='col-sm-4 p-3'>
+          <Card color="card-color-purple" type='IconsS' icon="faBedPulse" title="Admitted Patients" link="/view/admit/patient"/>
+        </div>
+        <div className='col-sm-4 p-3'>
           <Card color="card-color-tomato" type='IconsR' icon="faPlusSquare" title="Add Doctor" link="/add/doctor"/>
         </div>
         <div className='col-sm-4 p-3'>

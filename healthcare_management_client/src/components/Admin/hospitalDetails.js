@@ -8,7 +8,7 @@ export const HospitalDetails = () => {
   const [count, setCount] = useState(0);
   const [remCount, setremCount] = useState(0);
   const [status, setStatus] = useState("Available");
-
+  const [type, setType] = useState("room");
   const AddDetails=(e)=>{
      e.preventDefault()
      if(name=="" || count==0 || remCount==0 || status==""){
@@ -18,16 +18,13 @@ export const HospitalDetails = () => {
             name:name,
             count:count,
             remCount:remCount,
-            status:status
+            status:status,
+            type:type
          }
          axios.post('/update/hospital/details',obj)
          .then(result=>{
             if(result.data){
                 toast.success("Facility Added successfully")
-                setName("")
-                setCount("")
-                setremCount("")
-                setStatus("Available")
                 window.location.reload();
             }else{
                 toast.error("Something went wrong")
@@ -97,6 +94,16 @@ export const HospitalDetails = () => {
             <option value="Unavailable">Unavailable</option>
             <option value="Under-Maintainance">Under-Maintainance</option>
             <option value="Damaged">Damaged</option>
+          </select>
+          <label>Type</label>
+          <select
+            className="form-control"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          >
+            <option disabled>Please select one</option>
+            <option value="room">Room</option>
+            <option value="equipment">Equipment</option>
           </select>
           <button className="btn btn-primary w-25 mt-3" onClick={(e)=>AddDetails(e)}>Submit</button>
         

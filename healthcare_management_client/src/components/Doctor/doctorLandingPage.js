@@ -12,6 +12,9 @@ export const doctorLandingPage = () => {
             <Card color="card-color-green" type='IconsR' icon="faEye" title="View Appointments" link='/user/doctor/view/appointments'/>
           </div>
           <div className='col-sm-4 p-1'>
+          <Card color="card-color-purple" type='IconsS' icon="faBedPulse" title="Admitted Patients" link="/view/admit/patient"/>
+        </div>
+          <div className='col-sm-4 p-1'>
             <Card color="card-color-yellow" type='IconsS' icon="faHospital" title="Hospital Details" link='/user/doctor/view/facility/details'/>
           </div>
       </div>

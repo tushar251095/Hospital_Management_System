@@ -26,7 +26,7 @@ import PatientHistory from './components/Doctor/patientHistory';
 import {BrowserRouter as Router,Route,Routes } from 'react-router-dom'
 import ViewFacility from './components/Doctor/viewFacility';
 import ViewAdmitRequest from './components/Admin/viewAdmitRequest';
-
+import AdmitPatients from './components/admitPatients';
 function App() {
   return (
      <AuthProvider>
@@ -65,6 +65,7 @@ function App() {
             <Route element={ <RequireAuth allowedRoles={["doctor","admin"]}/>}>
               <Route path="/user/doctor/search/patient" element={<SearchPatient/>}/>
               <Route path="/user/doctor/patient/history" element={<PatientHistory/>}/>
+              <Route path="/view/admit/patient" element={<AdmitPatients/>}/>
             </Route>
             <Route element={ <RequireAuth allowedRoles={["doctor","patient"]}/>}>
               <Route path="/user/profile" element={<Profile/>}/>

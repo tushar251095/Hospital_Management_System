@@ -1,0 +1,32 @@
+.maincontent{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),url('../../../public/Images/loginBanner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    background-size:cover;
+}
+
+.signupContainer{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),url('../../../public/Images/patientBanner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    background-size:cover;
+}
+
+.adddoctorContainer{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),url('../../../public/Images/doctorBanner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    background-size:cover;
+}

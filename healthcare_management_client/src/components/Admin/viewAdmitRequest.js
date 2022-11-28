@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from '../../services/axios'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ViewAdmitRequest = (props) => {
 const [rqeuestDetails,setRequestDetails]= useState([
@@ -16,11 +17,10 @@ const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 const [roomData,setRoomData]=useState([])
-const [roomType,setRoomType]=useState("")
+const [roomType,setRoomType]=useState("ICU Rooms")
 const getFacilityDetails=()=>{
-    axios.get('/get/hospital/details')
+    axios.post('/get/specific/type/speciality',{type:"room"})
     .then(result=>{
-        console.log(result.data)
         setRoomData(result.data)
     })
 }
@@ -35,6 +35,24 @@ const viewAdmitForm=(e,data)=>{
     getFacilityDetails()
     handleShow()
 }
+
+const saveAdmitDetails=(id)=>{
+    let obj={
+        name:roomType,
+        id:id
+    }
+    axios.post('/save/admit/request',obj)
+    .then(result=>{
+        toast.success(result.data)
+        getRequestDetails();
+        handleClose()
+    })
+    .catch(err=>{
+        console.log(err)
+        toast.error(err)
+    })
+    console.log(obj)
+}
 useEffect(()=>{
     getRequestDetails();
 },[])
@@ -47,6 +65,20 @@ const getRequestDetails=()=>{
 }
   return (
     <div className='container-fluid'>
+        <div>
+           <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </div>
          <Modal {...props} size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
@@ -126,7 +158,7 @@ const getRequestDetails=()=>{
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>          
-          <Button variant="primary">
+          <Button variant="primary" onClick={()=>{saveAdmitDetails(admitData._id)}}>
             Submit
           </Button>
         </Modal.Footer>

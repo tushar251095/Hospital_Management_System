@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 export const ViewAppointment = (props) => {
     const [height, setHeight]= useState("");
@@ -23,7 +23,16 @@ export const ViewAppointment = (props) => {
     const [comment,setComment] =useState("");
     const [prescription,setPrescription]= useState("");
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setHeight("")
+        setWeight("")
+        setBloodGroup("")
+        setBloodPressure("")
+        setPrescription("")
+        setComment("")
+        setSugarLevel("")
+    }
     const handleShow = () => setShow(true);
     const navigate = useNavigate()
     useEffect(()=>{

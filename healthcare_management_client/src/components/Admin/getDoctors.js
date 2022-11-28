@@ -170,7 +170,7 @@ export const GetDoctors = (props) => {
                     <option value="Others">Others</option>
                 </select><br/>
                 <label className='lables'>Email:</label>
-                <input type={"text"} id="email" value={email} onChange = {(e) => setEmail(e.target.value)} placeholder="Enter your email" className='form-control'/><br/>
+                <input type={"text"} id="email" value={email} disabled onChange = {(e) => setEmail(e.target.value)} placeholder="Enter your email" className='form-control'/><br/>
                 <label className='lables'>Phone No.:</label>
                 <input type={"text"} id="contact" value={contact} onChange = {(e) => setContact(e.target.value)} placeholder="Enter your contact" className='form-control'/><br/>
                 <label className='lables'>Specialization:</label>
@@ -204,6 +204,16 @@ export const GetDoctors = (props) => {
         </div>
         <div className='row mt-3 g-0 p-3'>
             <div className='col-sm-12'>
+                {
+                    docList.length==0 &&
+                    <div className="row border border-secondary mt-3">
+              <div className="col-sm-12">
+                <h3 className="text-secondary text-center p-5">
+                   Doctor List is Empty
+                </h3>
+              </div>
+            </div>
+                }
                 <table className='table table-bordered table-striped'>
                     <thead>
                         <tr>

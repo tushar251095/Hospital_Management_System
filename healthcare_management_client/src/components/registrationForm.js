@@ -7,6 +7,7 @@ import '../assets/CSS/common.css'
 import '../assets/CSS/registartion.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../assets/CSS/background.css'
 export const registrationForm = (props) => {
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
@@ -68,7 +69,7 @@ export const registrationForm = (props) => {
     }
 
   return (
-    <div className='main container-fluid g-0'> 
+    <div className='main container-fluid g-0 signupContainer'> 
         <div>
            <ToastContainer
                 position="top-center"
@@ -83,12 +84,12 @@ export const registrationForm = (props) => {
                 theme="light"
             />
         </div>
-    <div className='row g-0 mt-5'>
+    <div className='row g-0 mt-3'>
         <div className='col-sm-12'>
             <h3 className='text-center'>Registartion Form</h3>
         </div>
     </div>
-    <div className='row g-0 p-5'>
+    <div className='row g-0 pb-5'>
         <div className='col-sm-12 d-flex justify-content-center'>
             <div className='w-50 card p-5'>
                 <label className='lables'>First Name:</label>

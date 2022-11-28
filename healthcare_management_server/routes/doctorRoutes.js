@@ -12,4 +12,7 @@ router.put("/appointment/cancel/:id",jwt.verifyToken,controller.cancelAppointmen
 router.get("/get/patient/:id",jwt.verifyToken,controller.GetPatient);
 router.post("/update/patient/details",jwt.verifyToken,controller.updatePateintDetails);
 router.put("/update/admitStatus",jwt.verifyToken,controller.admitStatus);
+router.post("/update/round/details",jwt.verifyToken,controller.updateDoctorRounds);
+router.put("/discharge/patient",jwt.verifyToken,controller.dischargeStatus);
+
 module.exports=router;

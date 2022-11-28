@@ -1,9 +1,9 @@
 const  Patient = require("../model/patientModel");
 // const  User = require("../model/masterUser");
 const  Doctor = require("../model/doctorModel");
+const  Hospital = require("../model/hospitalModel");
 const  Appointment = require("../model/appointmentModel");
 const jwtMiddleware = require("../middleware/jwt");
-const { request } = require("express");
 
 exports.GenerateSchedule = (req,res,next)=>{
     let token = req.headers.authorization.split(" ")[1];
@@ -131,4 +131,73 @@ exports.admitStatus=(req,res,next)=>{
     res.send(result.acknowledged)
   })
   .catch(err=>next(err))
+}
+exports.dischargeStatus=(req,res,next)=>{
+  let dischargeDate=new Date()
+  Appointment.updateOne({'_id':req.body.appId},{$set:{'isAdmitted':req.body.isAdmitted,"admitDetails.dischargeDate":dischargeDate}})
+  .then(result=>{
+     if(result.acknowledged){
+        Appointment.findOne({'_id':req.body.appId})
+        .then(result1=>{
+            Hospital.updateOne({"name":result1.admitDetails.roomType},{$push:{'availableRooms':result1.admitDetails.roomNo}})
+            .then(result2=>{
+                if(result2.acknowledged){
+                    Hospital.findOne({"name":result1.admitDetails.roomType})
+                    .then(result3=>{
+                      Hospital.updateOne({"name":result1.admitDetails.roomType},{$set:{'remCount':result3.remCount + 1}})
+                       .then(result5=>{
+                            if(result5.acknowledged){
+                              res.send(true)
+                            }else{
+                              res.send(false)
+                            }
+                       })
+                       .catch(err=>next(err))
+                    })
+                    .catch(err=>next(err))
+                }else{
+                  res.send(false)
+                }
+            })
+            .catch(err=>next(err))
+        })
+        .catch(err=>next(err))
+     }
+     else{
+      res.send(false)
+    }
+  })
+  .catch(err=>next(err))
+}
+exports.updateDoctorRounds=(req,res,next)=>{
+      let data=req.body
+      let id=req.body._id
+      let patientId=req.body.patientId
+      for (const [key, value] of Object.entries(data)) {
+         if(value=='' || value==0 || value==undefined || key=="_id" || key=='patientId'){
+            delete data[key]
+         }
+      }
+     Appointment.updateOne({'_id':id}, { $addToSet: { 'admitDetails.rounds': data } })
+     .then(result=>{
+       if(result.acknowledged){
+        for (const [key, value] of Object.entries(data)) {
+          if(key=='comment' || key=='prescription'){
+             delete data[key]
+          }
+       }
+          Patient.updateOne({'patientId':patientId},{$set:data})
+          .then(result1=>{
+            if(result1.acknowledged){
+              res.send(true)
+            }else{
+              res.send(false)
+            }
+          })
+          .catch(err=>next(err))
+       }else{
+         res.send(false)
+       }
+     })
+     .catch(err=>next(err))
 }

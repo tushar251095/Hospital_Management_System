@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../services/axios'
-
+import '../../assets/CSS/background.css'
 export const AddDoctor = () => {
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
@@ -61,7 +61,7 @@ export const AddDoctor = () => {
         
      }
   return (
-    <div className='main container-fluid g-0'> 
+    <div className='main container-fluid g-0 adddoctorContainer'> 
         <div>
            <ToastContainer
                 position="top-center"
@@ -78,10 +78,10 @@ export const AddDoctor = () => {
         </div>
     <div className='row g-0 mt-5'>
         <div className='col-sm-12'>
-            <h3 className='text-center'>Registartion Form</h3>
+            <h3 className='text-center'>Doctor Registartion Form</h3>
         </div>
     </div>
-    <div className='row g-0 p-5'>
+    <div className='row g-0 pb-5'>
         <div className='col-sm-12 d-flex justify-content-center'>
             <div className='w-50 card p-5'>
                 <label className='lables'>First Name:</label>
@@ -101,6 +101,7 @@ export const AddDoctor = () => {
                 <label className='lables'>Specialization:</label>
                 {/* <input type={"text"} id="specialization" value={specialization} onChange = {(e) => setSpecialization(e.target.value)} placeholder="Enter your contact" className='form-control'/><br/> */}
                 <select value={specId} onChange={(e) => setspecId(e.target.value)} className="form-control">
+                <option disabled>Select Specialization</option>
                     {
                         specialities.map((spec,index)=>(
                             <option key={index} value={spec.specId}>{spec.specName}</option>    

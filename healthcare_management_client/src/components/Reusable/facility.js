@@ -14,6 +14,7 @@ export const Facility = (props) => {
     const [EditremCount, setEditremCount] = useState(0);
     const [Editstatus, setEditStatus] = useState("Available");
     const [DeleteId, setDeleteId] = useState("")
+    const [Edittype, setEdittype] = useState("room");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -32,6 +33,7 @@ export const Facility = (props) => {
         setEditCount(data.count)
         setEditremCount(data.remCount)
         setEditStatus(data.status)
+        setEdittype(data.type)
         handleShow()
     }
     const openDelete = (data) => {
@@ -46,7 +48,8 @@ export const Facility = (props) => {
             name: Editname,
             count: Editcount,
             remCount: EditremCount,
-            status: Editstatus
+            status: Editstatus,
+            type:Edittype
         }
         axios.post('/update/hospital/details', obj)
             .then(result => {
@@ -144,6 +147,16 @@ export const Facility = (props) => {
                                 <option value="Under-Maintainance">Under-Maintainance</option>
                                 <option value="Damaged">Damaged</option>
                             </select>
+                            <label>Type</label>
+                            <select
+                                className="form-control"
+                                value={Edittype}
+                                onChange={(e) => setEdittype(e.target.value)}
+                            >
+                                <option disabled>Please select one</option>
+                                <option value="room">Room</option>
+                                <option value="equipment">Equipment</option>
+                            </select>
                         </div>
                     }
 
@@ -171,6 +184,7 @@ export const Facility = (props) => {
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                     <th>Remaining</th>
                                     <th>Total</th>                                    
@@ -184,7 +198,8 @@ export const Facility = (props) => {
                                 {
                                     details.map((equipment, index) => {
                                         return <tr key={index}>
-                                            <td>{equipment.name}</td>
+                                            <td>{ equipment.name}</td>
+                                            <td>{equipment.type}</td>
                                             <td>{equipment.status}</td>
                                             <td>{equipment.remCount}</td>
                                             <td>{equipment.count}</td>

@@ -51,7 +51,7 @@ exports.registerUser = (req, res, next) => {
 
 
 exports.registerDoctor = (req, res, next) => {
-  //console.log(req.body);
+  console.log(req.body)
   req.body.doctorId = uuidv4();
   req.body.role="doctor"
   req.body.password=Math.random().toString(36).slice(-8)
@@ -73,7 +73,7 @@ exports.registerDoctor = (req, res, next) => {
        }
        Spec.findOne({specId:req.body.specId})
        .then((output)=>{
-          //console.log(output)
+          console.log(output)
           req.body.specialization=output.specName;
           let doctor = new Doctor(req.body);
           doctor
@@ -260,8 +260,23 @@ exports.getProfile=(req,res,next)=>{
 exports.AdminUpdateHospitalDetails=(req,res,next)=>{
       Hospital.updateOne({name:req.body.name},{$set:req.body}, {upsert: true})
       .then(result=>{
+        console.log(result)
         if(result.acknowledged){
-          res.send(true)
+          //if count chnage then available array don't change(will implement in future scope)
+          if(req.body.type=="room" && result.upsertedCount==1){
+              let remArray=[]
+              for(let i=1;i<=req.body.count;i++){
+                 remArray.push(i)
+              }
+              Hospital.updateOne({name:req.body.name},{$set:{availableRooms:remArray}})
+              .then(()=>{
+                res.send(true)
+              })
+              .catch(err=>next(err))
+          }else{
+            res.send(true)
+          }
+          
         }else{
           res.send(false)
         }
@@ -272,6 +287,14 @@ exports.AdminUpdateHospitalDetails=(req,res,next)=>{
 
 exports.getHospitalDetails=(req,res,next)=>{
   Hospital.find({})
+  .then(result=>{
+    res.send(result)
+  })
+  .catch(err=>next(err))
+}
+
+exports.getSpecificfacilityTypeDetails=(req,res,next)=>{
+  Hospital.find({type:req.body.type})
   .then(result=>{
     res.send(result)
   })
@@ -295,7 +318,7 @@ exports.viewRequest=(req,res,next)=>{
   Appointment.aggregate([
     {
         $match:{
-            isAdmitted:req.body.status
+            isAdmitted:req.body.status,
         }
     },
     {
@@ -323,15 +346,6 @@ exports.viewRequest=(req,res,next)=>{
           from: 'patients',
           localField:'patientId',
           foreignField:'patientId',
-          pipeline:[
-              {
-                  $project:{
-                      firstName:1,
-                      lastName:1,
-                      _id:0
-                  }
-              }
-          ],
           as:'patientDetails'
       }
   },
@@ -344,4 +358,46 @@ exports.viewRequest=(req,res,next)=>{
     res.send(result)
   })
   .catch(err=>next(err))
+}
+
+exports.saveAdmitDetails=(req,res,next)=>{
+  Hospital.findOne({"name":req.body.name})
+    .then(result=>{
+        if(result.remCout==0){
+            res.send("Room Not available")
+        }else{
+          Hospital.updateOne({"name":req.body.name},{$set:{"remCount":result.remCount-1}})
+          .then((result2)=>{
+              if(result2.acknowledged){
+                Hospital.updateOne({"name":req.body.name},{$pop:{"availableRooms":-1}})
+                .then(result3=>{
+                  if(result3.acknowledged){
+                    let admitDetails={
+                      admitDate:new Date(),
+                      roomType:req.body.name,
+                      roomNo:result.availableRooms[0]
+                    }
+                    Appointment.updateOne({"_id":req.body.id},{$set:{"admitDetails":admitDetails,"isAdmitted":"admitted"}})
+                    .then(result4=>{
+                         if(result4.acknowledged){
+                            res.send("Admitted successfully")
+                         }else{
+                            res.send("Something went wrong")
+                         }
+                    })
+                    .catch(err=>next(err))
+                  }else{
+                    res.send("Something went wrong")
+                 }
+                 
+                })
+                .catch(err=>next(err))
+              }else{
+                res.send("Something went wrong")
+             }
+          })
+          .catch(err=>next(err))
+        }
+    })
+    .catch(err=>next(err))
 }

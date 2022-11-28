@@ -5,6 +5,8 @@ const hospitalSchema = new Schema({
     status: {type: String,required: [true, 'status is required']},
     count:{type:Number,required: [true, 'count is required']},
     remCount:{type:Number,required: [true, 'remCount is required']},
+    type: {type: String,required: [true, 'type is required']},
+    availableRooms:{type:Array}
 },
 {
   timestamps:true

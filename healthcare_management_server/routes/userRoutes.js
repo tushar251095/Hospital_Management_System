@@ -37,5 +37,8 @@ router.delete("/delete/hospital/details/:id",jwt.verifyToken,controller.deleteHo
 
 router.post("/get/admit",jwt.verifyToken,controller.viewRequest);
 
+router.post('/get/specific/type/speciality',jwt.verifyToken,controller.getSpecificfacilityTypeDetails)
+
+router.post('/save/admit/request',jwt.verifyToken,controller.saveAdmitDetails)
 
 module.exports=router;

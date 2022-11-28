@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../utlis/AuthProvider';
+import helper from '../../helper/helper'
 const mainNav={
     main:{
         backgroundColor:'#7F93CB',
@@ -50,10 +51,10 @@ const Navbar=()=>{
                                 localStorage.getItem('role')=='admin' &&  <Link to="/user/admin"><p className='mt-2 text-light float-start'>&nbsp;Admin</p></Link>
                             }
                             {
-                                localStorage.getItem('role')=='doctor' &&  <Link to="/user/doctor"><p className='mt-2 text-light float-start'>&nbsp;{localStorage.getItem('name')}</p></Link>
+                                localStorage.getItem('role')=='doctor' &&  <Link to="/user/doctor"><p className='mt-2 text-light float-start'>&nbsp;{helper.capitalName(localStorage.getItem('name').split(" ")[0])+" "+helper.capitalName(localStorage.getItem('name').split(" ")[1])}</p></Link>
                             }
                             {
-                                localStorage.getItem('role')=='patient' &&  <Link to="/user/patient"><p className='mt-2 text-light float-start'>&nbsp;{localStorage.getItem('name')}</p></Link>
+                                localStorage.getItem('role')=='patient' &&  <Link to="/user/patient"><p className='mt-2 text-light float-start'>&nbsp;{helper.capitalName(localStorage.getItem('name').split(" ")[0])+" "+helper.capitalName(localStorage.getItem('name').split(" ")[1])}</p></Link>
                             }
                         </div>
                     </span>
