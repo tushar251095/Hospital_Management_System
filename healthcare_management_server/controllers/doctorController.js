@@ -36,7 +36,7 @@ exports.GetSchedule=(req,res,next)=>{
   let doctorId=req.params.id
    Doctor.find({doctorId:doctorId},{schedule:1})
    .then((result)=>{
-    Appointment.find({doctorId:doctorId},{_id:0,appointmentTimestamp:1})
+    Appointment.find({doctorId:doctorId,status:'pending'},{_id:0,appointmentTimestamp:1})
   .then(result1=>{
     let arr=[]
     for(let i=0;i<result1.length;i++){

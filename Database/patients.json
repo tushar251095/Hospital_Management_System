@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "63829d67e7319114367df950"
+  },
+  "patientId": "ded19e70-c315-4939-a3b3-87e0c04c5057",
+  "firstName": "tushar",
+  "lastName": "nemade",
+  "age": "27",
+  "gender": "Male",
+  "email": "tushar@gmail.com",
+  "contact": "9803279720",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504359770"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669664098751"
+    }
+  },
+  "__v": 0,
+  "bloodGroup": "o+",
+  "bloodPressure": "123",
+  "height": "5.6",
+  "sugarLevel": "156",
+  "weight": "68"
+},{
+  "_id": {
+    "$oid": "63829e5fe7319114367df954"
+  },
+  "patientId": "aad53da0-1aff-483c-8648-01d2ea41e0d5",
+  "firstName": "hoshank",
+  "lastName": "mali",
+  "age": "26",
+  "gender": "Male",
+  "email": "hoshank@gmail.com",
+  "contact": "9803279722",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504607037"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587048071"
+    }
+  },
+  "__v": 0,
+  "bloodGroup": "o+",
+  "bloodPressure": "123",
+  "height": "6",
+  "sugarLevel": "150",
+  "weight": "66"
+},{
+  "_id": {
+    "$oid": "63829ea8e7319114367df958"
+  },
+  "patientId": "b843c2d2-bd8f-4698-9835-1d372658506f",
+  "firstName": "arundhati",
+  "lastName": "mishra",
+  "age": "26",
+  "gender": "Female",
+  "email": "arundhati@gmail.com",
+  "contact": "7864536730",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504680240"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669504680240"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63829ed8e7319114367df95c"
+  },
+  "patientId": "61dd2e00-7ec3-4a25-a54f-940918468bf8",
+  "firstName": "sunil",
+  "lastName": "sundaram",
+  "age": "26",
+  "gender": "Male",
+  "email": "sunil@gmail.com",
+  "contact": "67534356754",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504728219"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587695935"
+    }
+  },
+  "__v": 0,
+  "bloodGroup": "B+",
+  "bloodPressure": "123",
+  "height": "5.9",
+  "sugarLevel": "156",
+  "weight": "70"
+}]

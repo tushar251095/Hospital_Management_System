@@ -1,0 +1,252 @@
+[{
+  "_id": {
+    "$oid": "6383dddc58cdb626daf10195"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "ded19e70-c315-4939-a3b3-87e0c04c5057",
+  "appointmentTimestamp": {
+    "$numberLong": "1669671000000"
+  },
+  "status": "attended",
+  "discription": "Headache",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669586396289"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669664098748"
+    }
+  },
+  "__v": 0,
+  "appointmentDetails": {
+    "height": "5.6",
+    "weight": "68",
+    "bloodPressure": "123",
+    "bloodGroup": "o+",
+    "sugarLevel": "156",
+    "patientId": "ded19e70-c315-4939-a3b3-87e0c04c5057",
+    "appId": "6383dddc58cdb626daf10195",
+    "comment": "Take Care",
+    "prescription": "Paracetamol and Ibugesic"
+  },
+  "isAdmitted": "pending"
+},{
+  "_id": {
+    "$oid": "6383de3858cdb626daf101b8"
+  },
+  "doctorId": "632ef092-1920-4912-b9b9-cef68dd858ba",
+  "patientId": "aad53da0-1aff-483c-8648-01d2ea41e0d5",
+  "appointmentTimestamp": {
+    "$numberLong": "1671649200000"
+  },
+  "status": "pending",
+  "discription": "Cold and fever",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669586488791"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669586488791"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6383de8858cdb626daf101cb"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "61dd2e00-7ec3-4a25-a54f-940918468bf8",
+  "appointmentTimestamp": {
+    "$numberLong": "1669672800000"
+  },
+  "status": "attended",
+  "discription": "Accident injury to brain",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669586568191"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587695932"
+    }
+  },
+  "__v": 0,
+  "isAdmitted": "admitted",
+  "appointmentDetails": {
+    "height": "5.9",
+    "weight": "70",
+    "bloodPressure": "123",
+    "bloodGroup": "B+",
+    "sugarLevel": "156",
+    "patientId": "61dd2e00-7ec3-4a25-a54f-940918468bf8",
+    "appId": "6383de8858cdb626daf101cb",
+    "comment": "ICU required",
+    "prescription": "Ibugesic and crocin"
+  },
+  "admitDetails": {
+    "admitDate": {
+      "$date": {
+        "$numberLong": "1669587612738"
+      }
+    },
+    "roomType": "ICU Rooms",
+    "roomNo": 1,
+    "rounds": [
+      {
+        "sugarLevel": "156",
+        "comment": "Need extra attention",
+        "prescription": "Tylenol ",
+        "roundDate": "2022-11-27T22:21:35.922Z",
+        "doctor": "simran bhoir"
+      }
+    ]
+  }
+},{
+  "_id": {
+    "$oid": "6383decf58cdb626daf101de"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "b843c2d2-bd8f-4698-9835-1d372658506f",
+  "appointmentTimestamp": {
+    "$numberLong": "1680040800000"
+  },
+  "status": "pending",
+  "discription": "Internal bleeding follow-up",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669586639460"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669586639460"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6383df6558cdb626daf101f1"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "aad53da0-1aff-483c-8648-01d2ea41e0d5",
+  "appointmentTimestamp": {
+    "$numberLong": "1669845600000"
+  },
+  "status": "attended",
+  "discription": "Swollen head",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669586789060"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587048067"
+    }
+  },
+  "__v": 0,
+  "appointmentDetails": {
+    "height": "6",
+    "weight": "66",
+    "bloodPressure": "123",
+    "bloodGroup": "o+",
+    "sugarLevel": "150",
+    "patientId": "aad53da0-1aff-483c-8648-01d2ea41e0d5",
+    "appId": "6383df6558cdb626daf101f1",
+    "comment": "Warm compression",
+    "prescription": "Paracetamol twice a day"
+  }
+},{
+  "_id": {
+    "$oid": "6383e0b658cdb626daf10227"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "aad53da0-1aff-483c-8648-01d2ea41e0d5",
+  "appointmentTimestamp": {
+    "$numberLong": "1672264800000"
+  },
+  "status": "pending",
+  "discription": "Follow-up for headache",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669587126557"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587126557"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63850c80dabc8bc03a6f801b"
+  },
+  "doctorId": "0d08bcd6-af1e-4c7b-abb6-b57098e18b73",
+  "patientId": "61dd2e00-7ec3-4a25-a54f-940918468bf8",
+  "appointmentTimestamp": {
+    "$numberLong": "1676489446000"
+  },
+  "status": "pending",
+  "discription": "Leg fracture",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669663872987"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669663872987"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63850dd8dabc8bc03a6f8059"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "b843c2d2-bd8f-4698-9835-1d372658506f",
+  "appointmentTimestamp": {
+    "$numberLong": "1671559200000"
+  },
+  "status": "cancelled",
+  "discription": "Test",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669664216120"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669664228228"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63850fc6123579f8fa4eb502"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "patientId": "b843c2d2-bd8f-4698-9835-1d372658506f",
+  "appointmentTimestamp": {
+    "$numberLong": "1671561000000"
+  },
+  "status": "pending",
+  "discription": "Headache",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669664710466"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669664710466"
+    }
+  },
+  "__v": 0
+}]

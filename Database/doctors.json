@@ -1,0 +1,298 @@
+[{
+  "_id": {
+    "$oid": "6382a7a2eac1b09a6c545197"
+  },
+  "doctorId": "e76a7349-0835-4bfc-b68a-5fed90f7fcc6",
+  "firstName": "simran",
+  "lastName": "bhoir",
+  "email": "simran@gmail.com",
+  "contact": "1234567890",
+  "specialization": "Neurologist",
+  "specId": "3946f0dd-3a9b-4fa6-85e7-3e918a507dbd",
+  "role": "doctor",
+  "gender": "Female",
+  "schedule": [
+    {
+      "endDate": "2023-04-29T23:17:12.000Z",
+      "startTime": "10:00",
+      "endTime": "22:00",
+      "days": [
+        1,
+        2,
+        3
+      ],
+      "slot": 15
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669506978116"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508258670"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a8a8eac1b09a6c5451b0"
+  },
+  "doctorId": "317fe8f8-767c-4b21-8df3-6026fe61f40a",
+  "firstName": "onkar",
+  "lastName": "pednekar",
+  "email": "onkar@gmail.com",
+  "contact": "1234534560",
+  "specialization": "Neurologist",
+  "specId": "3946f0dd-3a9b-4fa6-85e7-3e918a507dbd",
+  "role": "doctor",
+  "gender": "Male",
+  "schedule": [
+    {
+      "endDate": "2023-05-31T23:18:00.000Z",
+      "startTime": "00:00",
+      "endTime": "17:00",
+      "days": [
+        3,
+        4,
+        5
+      ],
+      "slot": 30
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507240994"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508321686"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a907eac1b09a6c5451b9"
+  },
+  "doctorId": "632ef092-1920-4912-b9b9-cef68dd858ba",
+  "firstName": "koushik",
+  "lastName": "kulkarni",
+  "email": "koushik@gmail.com",
+  "contact": "34256562345",
+  "specialization": "G. Physician",
+  "specId": "bc1e4303-5d38-410f-b633-340a24acdb82",
+  "role": "doctor",
+  "gender": "Male",
+  "schedule": [
+    {
+      "endDate": "2023-05-04T23:19:22.000Z",
+      "startTime": "08:00",
+      "endTime": "12:00",
+      "days": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "slot": 15
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507335923"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508415065"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a955eac1b09a6c5451c2"
+  },
+  "doctorId": "f81f23c5-838d-4717-9b43-22434d86cc85",
+  "firstName": "prachi",
+  "lastName": "chandanshive",
+  "email": "prachi@gmail.com",
+  "contact": "7896541234",
+  "specialization": "G. Physician",
+  "specId": "bc1e4303-5d38-410f-b633-340a24acdb82",
+  "role": "doctor",
+  "gender": "Female",
+  "schedule": [
+    {
+      "endDate": "2023-05-12T23:20:47.000Z",
+      "startTime": "14:00",
+      "endTime": "21:00",
+      "days": [
+        5,
+        6,
+        0
+      ],
+      "slot": 20
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507413661"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508507404"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a9b9eac1b09a6c5451cb"
+  },
+  "doctorId": "0d08bcd6-af1e-4c7b-abb6-b57098e18b73",
+  "firstName": "kanchan",
+  "lastName": "bhrambhe",
+  "email": "kanchan@gmail.com",
+  "contact": "8976542345",
+  "specialization": "Orthopedic",
+  "specId": "11d868dd-8387-4859-acfe-b34972c1616f",
+  "role": "doctor",
+  "gender": "Female",
+  "schedule": [
+    {
+      "endDate": "2023-04-29T23:24:38.000Z",
+      "startTime": "10:00",
+      "endTime": "16:00",
+      "days": [
+        2,
+        3
+      ],
+      "slot": 5
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507513980"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508703032"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382aa01eac1b09a6c5451d4"
+  },
+  "doctorId": "f64b5a47-dd06-4363-8049-eb69ad3311b9",
+  "firstName": "aayush",
+  "lastName": "ranade",
+  "email": "aayush@gmail.com",
+  "contact": "23456743526",
+  "specialization": "Orthopedic",
+  "specId": "11d868dd-8387-4859-acfe-b34972c1616f",
+  "role": "doctor",
+  "gender": "Male",
+  "schedule": [
+    {
+      "endDate": "2023-05-19T23:22:09.000Z",
+      "startTime": "10:00",
+      "endTime": "22:00",
+      "days": [
+        6,
+        0
+      ],
+      "slot": 10
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507585592"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508552415"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382aac3eac1b09a6c5451dd"
+  },
+  "doctorId": "209654ec-695a-4513-9596-0828c02c5908",
+  "firstName": "akhil",
+  "lastName": "sisal",
+  "email": "akhil@gmail.com",
+  "contact": "1234564537",
+  "specialization": "Cardiologist",
+  "specId": "65a869f1-6428-4359-b558-117175f33306",
+  "role": "doctor",
+  "gender": "Male",
+  "schedule": [
+    {
+      "endDate": "2023-04-29T23:22:55.000Z",
+      "startTime": "14:00",
+      "endTime": "22:00",
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "slot": 40
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507779824"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508613068"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382ab01eac1b09a6c5451e6"
+  },
+  "doctorId": "7c3f77da-7911-4cf6-962f-9ea60627acfb",
+  "firstName": "samruddhi",
+  "lastName": "tendulkar",
+  "email": "sam@gmail.com",
+  "contact": "456732876543",
+  "specialization": "Cardiologist",
+  "specId": "65a869f1-6428-4359-b558-117175f33306",
+  "role": "doctor",
+  "gender": "Female",
+  "schedule": [
+    {
+      "endDate": "2023-06-10T23:25:17.000Z",
+      "startTime": "16:00",
+      "endTime": "23:00",
+      "days": [
+        3,
+        5,
+        1
+      ],
+      "slot": 40
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507841365"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669508756800"
+    }
+  },
+  "__v": 0
+}]

@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "63545bf4a6b8c9121b155491"
+  },
+  "specId": "3946f0dd-3a9b-4fa6-85e7-3e918a507dbd",
+  "specName": "Neurologist",
+  "imageUrl": "https://www.topdoctors.co.uk/files/Image/large/58b0424e-411c-4243-9228-4a0725bbab96.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666472948290"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666472948290"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63546b1638d3d5ad3a824979"
+  },
+  "specId": "bc1e4303-5d38-410f-b633-340a24acdb82",
+  "specName": "G. Physician",
+  "imageUrl": "https://static.vecteezy.com/system/resources/previews/007/986/570/original/woman-doctor-icon-doctor-woman-with-stereoscopic-glyph-isolated-blue-background-vector.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666476822188"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666476822188"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63546bec38d3d5ad3a824985"
+  },
+  "specId": "11d868dd-8387-4859-acfe-b34972c1616f",
+  "specName": "Orthopedic",
+  "imageUrl": "https://img.freepik.com/premium-vector/orthopedic-logo-template-design-vector-emblem-design-concept-creative-symbol-icon_316488-2360.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666477036930"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666477036930"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63546c7238d3d5ad3a82498f"
+  },
+  "specId": "65a869f1-6428-4359-b558-117175f33306",
+  "specName": "Cardiologist",
+  "imageUrl": "https://images.everydayhealth.com/images/the-6-best-questions-to-ask-your-cardiologist-722x406.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666477170664"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666477170664"
+    }
+  },
+  "__v": 0
+}]

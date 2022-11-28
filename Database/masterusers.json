@@ -1,0 +1,235 @@
+[{
+  "_id": {
+    "$oid": "634ee76674dac641c28904dd"
+  },
+  "email": "admin@gmail.com",
+  "password": "$2b$10$zDQUtXuOInUNkUD9draa3uKEfnumZSXa.7j4.3QXQbsrEU/xMsOjy",
+  "role": "admin",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666115430305"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666115430305"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63829d67e7319114367df952"
+  },
+  "email": "tushar@gmail.com",
+  "password": "$2b$10$icqAImpwkL45zdHtjQ9CNeO8kskrFxW/TMSLUfDdO6wU4QtriH7ia",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504359780"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669504359780"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63829e5fe7319114367df956"
+  },
+  "email": "hoshank@gmail.com",
+  "password": "$2b$10$V06wXjddXyTRTRNM6Jx6GOK/ayUPBpN39vK84sK.7QA6hklEXbeVK",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504607040"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669504607040"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63829ea8e7319114367df95a"
+  },
+  "email": "arundhati@gmail.com",
+  "password": "$2b$10$iV1gZQUuKaIVUEOjxFTwUeamLuyhHVaBnlKI5AXvnmMUGe8V7zWSq",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504680244"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669504680244"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63829ed8e7319114367df95e"
+  },
+  "email": "sunil@gmail.com",
+  "password": "$2b$10$JnA99aBY1TObPgSytT.0LubsKIArfMKH0wVGIcib4NpcDDpKaxIke",
+  "role": "patient",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669504728223"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669504728223"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a7a2eac1b09a6c545199"
+  },
+  "email": "simran@gmail.com",
+  "password": "$2b$10$v0Sk5NZJ6cE2uZ.bnh2JQeS1rp/cXyo4OxgdcNIBYtzrAs46t0SJ.",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669506978142"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669506978142"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a8a8eac1b09a6c5451b2"
+  },
+  "email": "onkar@gmail.com",
+  "password": "$2b$10$GWecDX5q7TONQm3/hDtDPe/Qbegv.wWYllENaddflkYOePz3ToKkG",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507240998"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507240998"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a907eac1b09a6c5451bb"
+  },
+  "email": "koushik@gmail.com",
+  "password": "$2b$10$Dh/PQ0f6a3/St5PUWPX0O.n1EZDfmWhFuN8x/qi0kYa.n7rwDxe56",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507335927"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507335927"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a955eac1b09a6c5451c4"
+  },
+  "email": "prachi@gmail.com",
+  "password": "$2b$10$bJpQBtePY41GMuvpUq2rKeqfrRjQoh03h9AgCXcSXtOEDAHYQef2a",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507413664"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507413664"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382a9b9eac1b09a6c5451cd"
+  },
+  "email": "kanchan@gmail.com",
+  "password": "$2b$10$vtlDfqDrB5GMKexDtX5YXuWN64x7nZrXZb/zKkqMQzyIfyxpe.Nzi",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507513984"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507513984"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382aa01eac1b09a6c5451d6"
+  },
+  "email": "aayush@gmail.com",
+  "password": "$2b$10$LOiyNx81rGjgW4Wu1SV9DO8PTeJsdDnpcOmCb0ZNK/5xiKWr5mnKW",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507585596"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507585596"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382aac3eac1b09a6c5451df"
+  },
+  "email": "akhil@gmail.com",
+  "password": "$2b$10$ZO1B4ncgEdY6OX8hSA4A0O0wXygSP4hci008AlxyOYKV/P5l6c7re",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507779828"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507779828"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6382ab01eac1b09a6c5451e8"
+  },
+  "email": "sam@gmail.com",
+  "password": "$2b$10$lZNLqsOSvweDlgLbsGIItO0UH.8GpGP3XEo1MD3AlKZZ8I1MTwfDS",
+  "role": "doctor",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669507841368"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669507841368"
+    }
+  },
+  "__v": 0
+}]

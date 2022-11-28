@@ -1,0 +1,324 @@
+[{
+  "_id": {
+    "$oid": "6372aeb8059a9a26ef53dae5"
+  },
+  "name": "Beds",
+  "__v": 0,
+  "count": 100,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668460216956"
+    }
+  },
+  "remCount": 100,
+  "status": "Available",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668888556339"
+    }
+  },
+  "type": "room",
+  "availableRooms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ]
+},{
+  "_id": {
+    "$oid": "6372aee1059a9a26ef53db06"
+  },
+  "name": "X-ray Machine-1",
+  "__v": 0,
+  "count": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668460257310"
+    }
+  },
+  "remCount": 1,
+  "status": "Available",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668460257310"
+    }
+  },
+  "type": "equipment"
+},{
+  "_id": {
+    "$oid": "6372aefc059a9a26ef53db1b"
+  },
+  "name": "X-ray Machine-2",
+  "__v": 0,
+  "count": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668460284398"
+    }
+  },
+  "remCount": 1,
+  "status": "Damaged",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668460284398"
+    }
+  },
+  "type": "equipment"
+},{
+  "_id": {
+    "$oid": "6372af1a059a9a26ef53db34"
+  },
+  "name": "CT Scan Machine",
+  "__v": 0,
+  "count": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668460314945"
+    }
+  },
+  "remCount": 1,
+  "status": "Available",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668460314945"
+    }
+  },
+  "type": "equipment"
+},{
+  "_id": {
+    "$oid": "63791a67059a9a26ef546ea3"
+  },
+  "name": "Ultra Sound Machine-1",
+  "__v": 0,
+  "count": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668880999509"
+    }
+  },
+  "remCount": 1,
+  "status": "Available",
+  "type": "equipment",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668881009286"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "637936f7059a9a26ef54815b"
+  },
+  "name": "Delux Room",
+  "__v": 0,
+  "availableRooms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "count": 10,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668888311799"
+    }
+  },
+  "remCount": 10,
+  "status": "Available",
+  "type": "room",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668888311805"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "63793743059a9a26ef54819e"
+  },
+  "name": "ICU Rooms",
+  "__v": 0,
+  "availableRooms": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    2,
+    2
+  ],
+  "count": 15,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668888387849"
+    }
+  },
+  "remCount": 15,
+  "status": "Available",
+  "type": "room",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669587612736"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "637c3146059a9a26ef54c1a9"
+  },
+  "name": "Test",
+  "__v": 0,
+  "availableRooms": [],
+  "count": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669083462166"
+    }
+  },
+  "remCount": 1,
+  "status": "Available",
+  "type": "equipment",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669083462166"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "637c3169059a9a26ef54c1cc"
+  },
+  "name": "Private rooms",
+  "__v": 0,
+  "availableRooms": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "count": 10,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669083497989"
+    }
+  },
+  "remCount": 9,
+  "status": "Available",
+  "type": "room",
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669083628076"
+    }
+  }
+}]
