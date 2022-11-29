@@ -67,7 +67,11 @@ The Dashboard page allows patients to perform two operations:
 
   &nbsp; &nbsp; &nbsp; By clicking on book appointment patient can see the list of specalities avaliable in the hospital. After selecting specilaity he can select the doctor from the lis and then from appointment booking page he can select the time and date for the appointment.
 
-![image](https://user-images.githubusercontent.com/36665975/66570202-c256e680-eb8a-11e9-8839-6c7fef68ac4c.png)
+![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/specialityList.png?raw=true)
+
+![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/bookAppointmentDoctorList.png?raw=true)
+
+![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/bookAppointmnetForm.png?raw=true)
 
 **2. View patients’ Appointment History:**
 
@@ -109,7 +113,7 @@ In this page, he can see different cards which are the functinality that doctor 
      &nbsp; &nbsp; &nbsp;
      When clicked on search button in nav bar doctor is redirected to the search patient page where he can search paticular patient using patient first/last name and can view his all medical history.
 
-    ![image](https://user-images.githubusercontent.com/36665975/66570704-be779400-eb8b-11e9-92ae-21d8e0e4aba4.png)
+    ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/doctorAdmittedpatient.png?raw=true)
 
  **4. View Facility Details:**
      &nbsp; &nbsp; &nbsp;
@@ -138,7 +142,7 @@ On clicking the ‘Login’ button, the admin will be redirected to his/her dash
 
   &nbsp; &nbsp; &nbsp; Admin can able to view all the patients registered. This includes the patients’ First Name, Last Name, Email ID, Contact Number. 
   
-  ![image](https://user-images.githubusercontent.com/36665975/66571179-83c22b80-eb8c-11e9-8819-008cdd2b0c2e.png)
+  ![image]()
   
 **2. View the list of all doctors registered:**
 
