@@ -41,4 +41,6 @@ router.post('/get/specific/type/speciality',jwt.verifyToken,controller.getSpecif
 
 router.post('/save/admit/request',jwt.verifyToken,controller.saveAdmitDetails)
 router.get('/get/all/patient',jwt.verifyToken,controller.getAllPatients)
+
+router.delete('/delete/doctor/:id',jwt.verifyToken,controller.deleteDoctorbyID)
 module.exports=router;

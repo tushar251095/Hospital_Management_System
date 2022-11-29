@@ -409,3 +409,25 @@ exports.getAllPatients=(req,res,next)=>{
   })
   .catch(err=>next(err))
 }
+
+exports.deleteDoctorbyID=(req,res,next)=>{
+  console.log(req.params.id)
+  Doctor.deleteOne({"email":req.params.id})
+  .then(result=>{
+    console.log(result)
+    if(result.acknowledged && result.deletedCount==1){
+      User.deleteOne({"email":req.params.id})
+      .then(result1=>{
+          if(result1.acknowledged){
+            res.send(true)
+          }else{
+            res.send(false)
+          }
+      })
+      .catch(err=>next(err))
+    }else{
+      res.send(false)
+    }
+  })
+  .catch(err=>next(err))
+}

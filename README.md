@@ -138,7 +138,7 @@ On clicking the ‘Login’ button, the admin will be redirected to his/her dash
 
   &nbsp; &nbsp; &nbsp; Admin can able to view all the patients registered. This includes the patients’ First Name, Last Name, Email ID, Contact Number. 
   
-  ![image]()
+  ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/patientList.png?raw=true)
   
 **2. View the list of all doctors registered:**
 

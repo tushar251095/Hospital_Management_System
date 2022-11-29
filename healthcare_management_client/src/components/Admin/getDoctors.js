@@ -52,6 +52,25 @@ export const GetDoctors = (props) => {
             handleShow()
         }
     }
+    const deleteDoctor=(e,email)=>{
+        e.preventDefault()
+        if(window.confirm("Are you sure you want to delete the doctor?")){
+            axios.delete('/delete/doctor/'+email)
+            .then(result=>{
+                if(result.data){
+                    toast.success("Doctor Successfully Removed from system")
+                    getDoctList()
+                }else{
+                    toast.error("Something went wrong")
+                }
+            })
+            .catch(err=>{
+                toast.success("Something went wrong")
+                console.log(err)
+            })
+        }
+           
+    }
     const EditDetails=(e,doc)=>{
         e.preventDefault()
         getSpecialities()
@@ -239,6 +258,7 @@ export const GetDoctors = (props) => {
                                         <button className='btn btn-primary btn-sm' onClick={()=>viewSchedule(doc.schedule)}>View Schedule</button>&nbsp;
                                         
                                         <button className='btn btn-secondary btn-sm' onClick={(e)=>EditDetails(e,doc)}>Edit Details</button>
+                                       &nbsp; <button className='btn btn-danger btn-sm' onClick={(e)=>deleteDoctor(e,doc.email)}>Delete</button>
                                     </td>
                                 </tr>
                             })
