@@ -1,5 +1,3 @@
-# Healthcare_Management
-
 # Hospital Management System
 Hospital Management System using Express.js,Node.js, React.js and MongoDB
 
@@ -166,7 +164,7 @@ On clicking the ‘Login’ button, the admin will be redirected to his/her dash
 
 &nbsp; &nbsp; &nbsp; Admin can also delete the doctors from the system. This let admin to have more control over the system.
 
-![image]()
+![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/deleteDoctor.png?raw=true)
 
 
 
