@@ -35,7 +35,7 @@ Hospital Management System using Express.js,Node.js, React.js and MongoDB
 
 ## GETTING INTO THE PROJECT:
 This system has a ‘Home’ page from where the user can see what services system provide. 
-Header bar provide login option fro all the roles and sigup option for patient.
+Header bar provide login option for all the roles and sigup option for patient.
 
 
 ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/homePage%20(2).png?raw=true)
@@ -52,12 +52,12 @@ The application consists of 3 modules:
 ### Patient Module:
 
   &nbsp; &nbsp; &nbsp; This module allows patients to create their account, book an appointment to see a doctor and see their appointment history.
-  The registration page(in the home page itself) asks patients to enter their First Name, Last Name, Email ID, Contact Number, Password and dropdown to select their gender.
+  The registration page asks patients to enter their First Name, Last Name, Email ID, Contact Number, Password and dropdown to select their gender.
   
 ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/PatientRegistrationPage.png?raw=true)
 
 
-Once the patient has created his/her own account after clicking the ‘Register’ button, then his account will Created. Once patient login he will redirected to patient dashboard.
+Once the patient has created his/her own account after clicking the ‘Register’ button, then his account will be created. Once patient login he will be redirected to the patient dashboard.
 
 ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/patientDashBoard.png?raw=true)
 
@@ -75,7 +75,7 @@ The Dashboard page allows patients to perform two operations:
 
 **2. View patients’ Appointment History:**
 
-  &nbsp; &nbsp; &nbsp; Here, the patient can see their appointment history which contains Doctor Name, Appointment Date and Time and apointment Details(See Fig 1.8).
+  &nbsp; &nbsp; &nbsp; Here, the patient can see their appointment history which contains Doctor Name, Appointment Date and Time and apointment Details.
 	
 ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/patientMedicalHistory.png?raw=true)
 
@@ -88,7 +88,7 @@ This is how the patient module works. On the whole, this module allows patients 
 
   &nbsp; &nbsp; &nbsp; The doctors can login into their account. Registration of a doctor account can be done only by admin doctor will get the email of his/her password. We will discuss more about this in Admin Module.
 
-Once the doctor clicking the ‘Login’ button, they will be redirected to their own dashboard.
+Once the doctor click the ‘Login’ button, they will be redirected to their own dashboard.
 
 ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/doctorDashboard.png?raw=true)
 
@@ -96,12 +96,10 @@ In this page, he can see different cards which are the functinality that doctor 
 
 **1. Manage his/her appointment:**
     &nbsp; &nbsp; &nbsp; When doctor click on manage appointment card he will be redirected to manage appointment page where he can add.edit his appointment schedule as required by submitting the required details.
-
     ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/doctorManageSchedulePage.png?raw=true)
 
 **2. View Appointments:**
  &nbsp; &nbsp; &nbsp; Doctor can view his current, cancelled and attented appointment by clicking on this card. Where he can attend the appointment and can prescribe medicine to patient as well can send admit request to admin if patient is required to get admitted.
-    
     ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/DocotorAppointmentList.png?raw=true)
 
  **3. Search Patient:**
@@ -112,13 +110,11 @@ In this page, he can see different cards which are the functinality that doctor 
  **4. View admit patients:**
      &nbsp; &nbsp; &nbsp;
      When clicked on search button in nav bar doctor is redirected to the search patient page where he can search paticular patient using patient first/last name and can view his all medical history.
-
     ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/doctorAdmittedpatient.png?raw=true)
 
  **4. View Facility Details:**
      &nbsp; &nbsp; &nbsp;
      Doctor can view list of facility details in hospital.
-     
     ![image](https://github.com/tushar251095/Hospital_Management_System/blob/main/ProjectScreenshots/doctorFacilityList.png?raw=true)
 
 **5. Cancel Appointments**

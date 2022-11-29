@@ -401,3 +401,11 @@ exports.saveAdmitDetails=(req,res,next)=>{
     })
     .catch(err=>next(err))
 }
+
+exports.getAllPatients=(req,res,next)=>{
+  Patient.find({})
+  .then(result=>{
+        res.send(result)
+  })
+  .catch(err=>next(err))
+}

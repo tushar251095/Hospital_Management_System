@@ -20,6 +20,9 @@ const adminLandingPage = () => {
         <div className='col-sm-4 p-3'>
           <Card color="card-color-blue" type='IconsS' icon="faHospital" title="Facility Details" link="/hospital/details"/>
         </div>
+        <div className='col-sm-4 p-3'>
+          <Card color="card-color-green" type='IconsS' icon="faUsers" title="Patients List" link="/user/admin/patient/list"/>
+        </div>
     </div>
   </div>
   )

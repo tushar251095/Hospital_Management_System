@@ -40,5 +40,5 @@ router.post("/get/admit",jwt.verifyToken,controller.viewRequest);
 router.post('/get/specific/type/speciality',jwt.verifyToken,controller.getSpecificfacilityTypeDetails)
 
 router.post('/save/admit/request',jwt.verifyToken,controller.saveAdmitDetails)
-
+router.get('/get/all/patient',jwt.verifyToken,controller.getAllPatients)
 module.exports=router;
