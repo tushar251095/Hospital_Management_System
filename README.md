@@ -29,7 +29,14 @@ Hospital Management System using Express.js,Node.js, React.js and MongoDB
 8. Open browser and run http://localhost:8080/
 9. Client is running on port 8080 and server is running on port 3000.
 10. Hurray! That's it!
-  
+
+## steps to run using docker:
+1. Go to yaml file directory and run docker-compose up -d --build
+2. All the containers will start after this command and client will be running on port 8080 
+   and server on 3000.
+3. To setup database connect your mongoDB compass with mongo db container  using connecting 
+   string mongodb://<<IP address>>:27017, then in test db import all the collections from database folder.
+4. Hurray! Project is ready to explore.
 
 ## GETTING INTO THE PROJECT:
 This system has a ‘Home’ page from where the user can see what services system provide. 
