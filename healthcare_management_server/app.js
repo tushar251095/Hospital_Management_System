@@ -13,11 +13,15 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 //mongoose connection
-mongoose.connect('mongodb://localhost:27017/HealthcareManagement',{useNewUrlParser: true,useUnifiedTopology: true})
+const port =  3000;
+//connectionURL = "mongodb://localhost:27017/HealthcareManagement"
+connectionURL = "mongodb://mongodb-container:27017"
+mongoose.connect(connectionURL,{useNewUrlParser: true,useUnifiedTopology: true})
 .then(()=>{
 //start the server
 //Starting server
-const port = process.env.PORT || 3000;
+
+//const port = 3000;
 app.listen(port, () => {
  console.log("server running on port: ", port);
 });
@@ -32,6 +36,10 @@ app.use(methodoverride('_method'))
 app.use(express.urlencoded({extended:true}))
 
 //routes
+
+app.get('/', (req, res) => {
+    res.send('Server is running on port: ' + port);
+  });
 app.use("/user",userRouter);
 app.use("/doctor",doctorRouter);
 app.use("/patient",patientRouter);

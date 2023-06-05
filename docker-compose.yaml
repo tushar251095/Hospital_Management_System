@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./healthcare_management_client
+    ports:
+      - 8080:8080
+    networks:
+      - hms
+  backend:
+    build: ./healthcare_management_server
+    ports:
+      - 3000:3000
+    networks:
+      - hms
+  mongodb-container:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - hms
+    volumes:
+      - dbdata6:/data/db
+
+volumes:
+  dbdata6:
+
+networks:
+  hms:
+  
