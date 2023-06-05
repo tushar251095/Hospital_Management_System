@@ -11,6 +11,7 @@ const masterUserSchema = new Schema({
 }
 );
 
+//$2b$10$dU00uT3HsTfuULQIiF23duB.DIBci7m5EM.SzRPpH5.i1DCBmAWNK
 masterUserSchema.pre('save', function(next){
   let user = this;
   if (!user.isModified('password'))
@@ -18,6 +19,7 @@ masterUserSchema.pre('save', function(next){
   bcrypt.hash(user.password, 10)
   .then(hash => {
     user.password = hash;
+    //console.log(hash)
     next();
   })
   .catch(err => next(error));
